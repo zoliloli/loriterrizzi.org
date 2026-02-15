@@ -226,6 +226,16 @@
             border: 0;
         }
 
+        /* Mobile: fill viewport instead of maintaining 16:9 */
+        @media (max-aspect-ratio: 16/9) {
+            .hero-crossfade {
+                aspect-ratio: auto;
+                width: 100%;
+                height: 100vh;
+                height: 100dvh;
+            }
+        }
+
     </style>
 </head>
 <body>
