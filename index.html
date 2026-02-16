@@ -116,7 +116,7 @@
             },
             {
                 "@type": "VideoObject",
-                "name": "Goaloop — Street of Dreams",
+                "name": "Goaloop – Street of Dreams",
                 "description": "Goaloop's origin story video from a historical context, including the impact of James Baldwin, public art, and New York City.",
                 "creator": "Lori Terrizzi"
             },
@@ -129,7 +129,7 @@
             },
             {
                 "@type": "Article",
-                "name": "Goaloop — The Possibilities Are Endless",
+                "name": "Goaloop – The Possibilities Are Endless",
                 "url": "https://medium.com/@goaloop/goaloop-the-possibilities-are-endless-4cd7b8fc0524",
                 "author": "Jack Kim",
                 "about": [
@@ -182,7 +182,14 @@
             background: rgba(0, 0, 0, 0.6);
             -webkit-backdrop-filter: blur(8px);
             backdrop-filter: blur(8px);
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, opacity 0.6s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .site-nav.visible {
+            opacity: 1;
+            pointer-events: auto;
         }
 
         .nav-identity {
@@ -253,9 +260,9 @@
            Two 16:9 images dissolve in sequence, revealing a static purple tree.
 
            TIMING:
-             Slide 1 — holds 2.0s, dissolves 0.5s  → gone at 2.5s
-             Slide 2 — holds 2.0s, dissolves 0.5s  → gone at 5.0s
-             Purple Tree — revealed at 5.0s, holds permanently
+             Slide 1 – holds 2.0s, dissolves 0.5s  → gone at 2.5s
+             Slide 2 – holds 2.0s, dissolves 0.5s  → gone at 5.0s
+             Purple Tree – revealed at 5.0s, holds permanently
         */
 
         .hero-crossfade {
@@ -371,7 +378,7 @@
         }
 
         /* ===========================
-           VISUALLY HIDDEN (bio — crawlable, invisible)
+           VISUALLY HIDDEN (bio – crawlable, invisible)
            =========================== */
 
         .visually-hidden {
@@ -387,7 +394,7 @@
         }
 
         /* ===========================
-           RESPONSIVE — NAVIGATION
+           RESPONSIVE – NAVIGATION
            =========================== */
 
         @media (max-width: 768px) {
@@ -427,7 +434,7 @@
         }
 
         /* ===========================
-           RESPONSIVE — HERO (mobile portrait)
+           RESPONSIVE – HERO (mobile portrait)
            =========================== */
 
         @media (max-width: 768px) and (orientation: portrait) {
@@ -459,7 +466,7 @@
     <nav class="site-nav">
         <div class="nav-identity">
             <a href="/" class="nav-name">Lori Terrizzi</a>
-            <span class="nav-tagline">Goaloop — The Goal Market®</span>
+            <span class="nav-tagline">Goaloop – The Goal Market®</span>
         </div>
 
         <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
@@ -481,23 +488,23 @@
          =========================== -->
     <section id="home">
         <div class="hero-crossfade">
-            <!-- Slide 1: Swing® — "Goaloop began on a swing in a New York City apartment" -->
+            <!-- Slide 1: Swing® – "Goaloop began on a swing in a New York City apartment" -->
             <img
                 src="images/Lori-Terrizzi-Hero-Image-16x9-1.png"
-                alt="Goaloop began on a swing in a New York City apartment — illustrated scene of a handmade convertible swing, built by Lori Terrizzi, suspended from an archway with the NYC skyline visible in the background"
+                alt="Goaloop began on a swing in a New York City apartment – illustrated scene of a handmade convertible swing, built by Lori Terrizzi, suspended from an archway with the NYC skyline visible in the background"
                 class="slide-1"
                 draggable="false"
             >
 
-            <!-- Slide 2: Transcending Boundaries — "Welcome to Goaloop - The Goal Market®" -->
+            <!-- Slide 2: Transcending Boundaries – "Welcome to Goaloop - The Goal Market®" -->
             <img
                 src="images/Lori-Terrizzi-Hero-Image-16x9-2.png"
-                alt="Welcome to Goaloop - The Goal Market® — Connecting the World through Goals® — Got a Goal®? Goaloop it! — Goaloop logo within a purple arch above the New York City skyline"
+                alt="Welcome to Goaloop - The Goal Market® – Connecting the World through Goals® – Got a Goal®? Goaloop it! – Goaloop logo within a purple arch above the New York City skyline"
                 class="slide-2"
                 draggable="false"
             >
 
-            <!-- Static: Purple Tree — revealed after both dissolves, holds permanently -->
+            <!-- Static: Purple Tree – revealed after both dissolves, holds permanently -->
             <img
                 src="images/Lori-Terrizzi-Purple-Tree-16x9.jpg"
                 alt="Purple tree composed of Goaloop's goal symbol, three concentric circles"
@@ -523,7 +530,7 @@
          =========================== -->
 
     <!-- ===========================
-         BIO — visually hidden
+         BIO – visually hidden
          =========================== -->
     <section class="visually-hidden" aria-label="Biography of Lori Terrizzi">
         <div>
@@ -535,12 +542,12 @@
 
             <p>While protecting the creative freedom of artists writing in dozens of languages, the Internet was becoming a new 'language.' "Scaling" entered the lexicon. What were we scaling? Would it turn everyone into a 'persecuted writer?' How could we rewrite the semiotics of the Internet to help everyone achieve freedom?</p>
 
-            <p>These questions dovetailed with the collapse of Lehman Brothers, where Terrizzi had previously worked, provoking her imagination to conceive a new, accessible, transparent market. While at Lehman, she worked on a project with Ernest Green of the Little Rock Nine, whose transition from the non-profit sector to Wall Street made a lasting impression. She then produced for American Movie Classics on a weekly television show awarded the Emmy® for Best Series in its category for two consecutive years, before founding a non-profit film platform on the eve of YouTube, mentored by Carnegie Corporation president Vartan Gregorian. Terrizzi channeled these experiences to design Goaloop – The Goal Market®, a new cross-sector marketplace where the only cost of entry is a goal — and where every goal becomes a Govie™, an automatic 'goal movie.'</p>
+            <p>These questions dovetailed with the collapse of Lehman Brothers, where Terrizzi had previously worked, provoking her imagination to conceive a new, accessible, transparent market. While at Lehman, she worked on a project with Ernest Green of the Little Rock Nine, whose transition from the non-profit sector to Wall Street made a lasting impression. She then produced for American Movie Classics on a weekly television show awarded the Emmy® for Best Series in its category for two consecutive years, before founding a non-profit film platform on the eve of YouTube, mentored by Carnegie Corporation president Vartan Gregorian. Terrizzi channeled these experiences to design Goaloop – The Goal Market®, a new cross-sector marketplace where the only cost of entry is a goal – and where every goal becomes a Govie™, an automatic 'goal movie.'</p>
 
             <p>As VP of the new James Baldwin Society at Rutgers, Terrizzi began writing Mr. Baldwin a letter. He had agreed to attend the inaugural meeting; he died two months before. The letter remained unfinished – until Terrizzi completed it in a forthcoming video that tells Goaloop's origin story. The James Baldwin Estate granted Terrizzi permission to include an interview of Mr. Baldwin in this video, "Goaloop – Street of Dreams," which includes two screens:</p>
 
             <blockquote>
-                <p>"The framework in which we operate weighs on us too heavily to be borne and is about to kill us." — James Baldwin, 1963</p>
+                <p>"The framework in which we operate weighs on us too heavily to be borne and is about to kill us." – James Baldwin, 1963</p>
             </blockquote>
 
             <blockquote>
@@ -552,6 +559,13 @@
             <p>The granddaughter of Armenian Genocide survivors and Sicilian immigrants, and the daughter of first-generation professors, Terrizzi was raised in Amherst, Massachusetts, and now resides in New York City.</p>
         </div>
     </section>
+
+    <!-- Reveal nav after purple tree appears (6.0s) -->
+    <script>
+        setTimeout(function () {
+            document.querySelector('.site-nav').classList.add('visible');
+        }, 6000);
+    </script>
 
 </body>
 </html>
