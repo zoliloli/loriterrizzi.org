@@ -7,7 +7,7 @@
     <meta name="robots" content="index,follow">
     <meta name="robots" content="max-snippet:-1, max-image-preview:large">
     <meta name="keywords" content="Goaloop Founder, Goaloop - The Goal Market®, Columbia University alumna, Rutgers College alumna, filmmaker, writer, American of Italian and Armenian descent, Connecting the World Through Goals®, The Goal Index®, The Goal Engine®, The Goal Network®, The Goal Manager®, Yale Law School Clinic client, human rights, equality, social impact technology">
-    <meta name="description" content="Lori Terrizzi is the CEO/Founder + Site Architect of GOALOOP® - The Goal Market®, Connecting the World through Goals®. The advantage of some of us should guarantee the advantage of us all. MFA from Columbia University in Film, Phi Beta Kappa graduate of Rutgers College. Writer, filmmaker, founder.">
+    <meta name="description" content="Lori Terrizzi is the CEO/Founder + Site Architect of GOALOOP® - The Goal Market®, Connecting the World through Goals®. MFA from Columbia University in Film, Phi Beta Kappa graduate of Rutgers College. Writer, filmmaker, founder.">
 
     <!-- Enhanced SEO Meta Tags -->
     <meta name="author" content="Lori Terrizzi">
@@ -19,6 +19,11 @@
     <link rel="me" href="https://www.linkedin.com/in/loriterrizzi/">
     <link rel="me" href="https://goaloop.com/loriterrizzi">
     <link rel="me" href="https://entrepreneurship.columbia.edu/startup/goaloop-2/">
+    <link rel="me" href="https://medium.com/@goaloop/goaloop-the-possibilities-are-endless-4cd7b8fc0524">
+    <link rel="me" href="https://medium.com/@goaloop/raising-liberty-1235946119aa">
+
+    <!-- Adobe Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/see6hef.css">
 
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -32,8 +37,8 @@
     <meta property="og:description" content="CEO/Founder of GOALOOP - The Goal Market®, Connecting the World through Goals®. Columbia MFA, Rutgers Phi Beta Kappa graduate.">
     <meta property="og:type" content="profile">
     <meta property="og:url" content="https://loriterrizzi.org">
-    <meta property="og:image" content="https://loriterrizzi.org/images/LoriTerrizzi-philosophy.jpg">
-    <meta property="og:image:alt" content="Lori Terrizzi — The advantage of some of us should guarantee the advantage of us all. No man is an island. No land is a woman. Goaloop – Street of Dreams. Raising Liberty.">
+    <meta property="og:image" content="https://loriterrizzi.org/images/LoriTerrizzi-profile-color-square.png">
+    <meta property="og:image:alt" content="Lori Terrizzi, CEO/Founder of GOALOOP - The Goal Market®">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
@@ -75,7 +80,7 @@
         ],
         "nationality": ["American"],
         "birthPlace": "United States",
-        "knowsAbout": ["Film", "Art", "Technology", "Equality", "Economic Justice", "Goals", "Entrepreneurship", "Social Impact Technology", "Surveillance Capitalism", "Digital Infrastructure", "Human Rights", "Civil Rights"],
+        "knowsAbout": ["Film", "Art", "Technology", "AI", "Equality", "Equity", "Economic Justice", "Social Mobility", "Goals", "Entrepreneurship", "Social Impact Technology", "Surveillance Capitalism", "Stakeholder Capitalism", "Digital Infrastructure", "Human Rights", "Civil Rights", "Social Justice"],
         "hasOccupation": [
             {
                 "@type": "Occupation",
@@ -97,7 +102,8 @@
             "https://goaloop.org/about/#founder",
             "https://entrepreneurship.columbia.edu/startup/goaloop-2/",
             "https://medium.com/@goaloop",
-            "https://www.linkedin.com/company/goaloop/"
+            "https://www.linkedin.com/company/goaloop/",
+            "https://medium.com/@goaloop/goaloop-the-possibilities-are-endless-4cd7b8fc0524"
         ],
         "image": "https://loriterrizzi.org/images/LoriTerrizzi-profile-color-square.png",
         "description": "CEO/Founder of GOALOOP - The Goal Market®, Connecting the World Through Goals®. MFA in Film from Columbia University, Phi Beta Kappa graduate of Rutgers College. Founding client of Yale Law School's Entrepreneurship & Innovation Clinic. Writer, filmmaker, social impact technology founder building an alternative to surveillance capitalism.",
@@ -110,8 +116,8 @@
             },
             {
                 "@type": "VideoObject",
-                "name": "Goaloop – Street of Dreams",
-                "description": "A film telling Goaloop's origin story from a historical context, including the impact of James Baldwin, public art, and New York City, the 'Street of Dreams'",
+                "name": "Goaloop — Street of Dreams",
+                "description": "Goaloop's origin story video from a historical context, including the impact of James Baldwin, public art, and New York City.",
                 "creator": "Lori Terrizzi"
             },
             {
@@ -120,6 +126,22 @@
                 "name": "Raising Liberty: The Construction of the Statue of Liberty as Reconstruction Was Under Attack",
                 "url": "https://medium.com/@goaloop/raising-liberty-1235946119aa",
                 "creator": "Lori Terrizzi"
+            },
+            {
+                "@type": "Article",
+                "name": "Goaloop — The Possibilities Are Endless",
+                "url": "https://medium.com/@goaloop/goaloop-the-possibilities-are-endless-4cd7b8fc0524",
+                "author": "Jack Kim",
+                "about": [
+                    {
+                        "@type": "Organization",
+                        "name": "GOALOOP - The Goal Market®"
+                    },
+                    {
+                        "@type": "Person",
+                        "name": "Lori Terrizzi"
+                    }
+                ]
             }
         ]
     }
@@ -132,18 +154,103 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #000000;
+            color: #ffffff;
             background: #000000;
+        }
+
+        /* ===========================
+           FIXED NAVIGATION
+           =========================== */
+
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.6);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            transition: background 0.3s ease;
+        }
+
+        .nav-identity {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-name {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .nav-tagline {
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ffffff;
+        }
+
+        /* Mobile hamburger */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #ffffff;
+            margin: 5px 0;
+            transition: 0.3s;
         }
 
         /* ===========================
            CSS CROSSFADE HERO
            ===========================
            Two 16:9 images dissolve in sequence, revealing a static purple tree.
-           Full resolution preserved. Responsive across all devices and browsers.
 
            TIMING:
              Slide 1 — holds 2.0s, dissolves 0.5s  → gone at 2.5s
@@ -154,14 +261,12 @@
         .hero-crossfade {
             position: relative;
             width: 100%;
-            max-width: 1920px;
             margin: 0 auto;
             background-color: #000;
             overflow: hidden;
             aspect-ratio: 16 / 9;
         }
 
-        /* Fallback for browsers without aspect-ratio support */
         @supports not (aspect-ratio: 16 / 9) {
             .hero-crossfade {
                 height: 0;
@@ -211,7 +316,62 @@
         }
 
         /* ===========================
-           CONTENT SECTION
+           FULL-SCREEN SECTIONS
+           =========================== */
+
+        .full-section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .full-section .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            z-index: 0;
+        }
+
+        .section-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px;
+            max-width: 1000px;
+        }
+
+        .section-content h2 {
+            font-size: clamp(28px, 5vw, 56px);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .section-content p {
+            font-size: clamp(14px, 2vw, 20px);
+            font-weight: 300;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .section-content .small-text {
+            font-size: clamp(11px, 1.2vw, 14px);
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 24px;
+        }
+
+        /* ===========================
+           VISUALLY HIDDEN (bio — crawlable, invisible)
            =========================== */
 
         .visually-hidden {
@@ -226,7 +386,50 @@
             border: 0;
         }
 
-        /* Mobile portrait: rotate content to display in landscape */
+        /* ===========================
+           RESPONSIVE — NAVIGATION
+           =========================== */
+
+        @media (max-width: 768px) {
+            .site-nav {
+                padding: 16px 20px;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                background: rgba(0, 0, 0, 0.95);
+                -webkit-backdrop-filter: blur(12px);
+                backdrop-filter: blur(12px);
+                padding: 10px 0;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 12px 20px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+        }
+
+        /* ===========================
+           RESPONSIVE — HERO (mobile portrait)
+           =========================== */
+
         @media (max-width: 768px) and (orientation: portrait) {
             .hero-crossfade {
                 aspect-ratio: auto;
@@ -246,12 +449,37 @@
                 transform: translateZ(0);
             }
         }
-
     </style>
 </head>
 <body>
-    <!-- Hero Section: CSS Crossfade -->
-    <section>
+
+    <!-- ===========================
+         NAVIGATION
+         =========================== -->
+    <nav class="site-nav">
+        <div class="nav-identity">
+            <a href="/" class="nav-name">Lori Terrizzi</a>
+            <span class="nav-tagline">Goaloop — The Goal Market®</span>
+        </div>
+
+        <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#works">Works</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://goaloop.com/loriterrizzi" target="_blank">Goaloop</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===========================
+         HERO: CSS CROSSFADE
+         =========================== -->
+    <section id="home">
         <div class="hero-crossfade">
             <!-- Slide 1: Swing® — "Goaloop began on a swing in a New York City apartment" -->
             <img
@@ -279,11 +507,51 @@
         </div>
     </section>
 
-    <!-- Bio Section — visually hidden, crawlable by search engines and AI -->
-    <section class="visually-hidden">
-        <div>
-            <a href="https://goaloop.org/about/#founder">Lori Terrizzi</a> is the CEO/Founder and Site Architect of <a href="https://entrepreneurship.columbia.edu/startup/goaloop-2/" target="_blank">GOALOOP - The Goal Market®, Connecting the World through Goals®</a>. Terrizzi holds an MFA from Columbia University in Film and is a Phi Beta Kappa graduate of Rutgers College, where she was awarded the Vanderbilt Scholarship for the Study of Art & Music. Goaloop is the product of her life-long focus on freedom, issues of identity, and study of the relationship between words and images, form and content, equity and ability, truth and memory, power and substance, one of us and all of us. The story "Raising Liberty: The Construction of the Statue of Liberty as Reconstruction Was Under Attack" served as a metaphor for the construction of Goaloop and can be <a href="https://medium.com/@goaloop/raising-liberty-1235946119aa" target="_blank">read here</a>; it is being made into a movie.
+    <!-- ===========================
+         SECTION: Placeholder for colored tree sections
+         Add your tree images and text content here.
+         Each section follows this pattern:
+
+    <section class="full-section">
+        <img src="images/tree-color.jpg" alt="Description" class="bg-image" draggable="false">
+        <div class="section-content">
+            <h2>Your Text Here</h2>
+            <p>Supporting text here.</p>
         </div>
     </section>
+
+         =========================== -->
+
+    <!-- ===========================
+         BIO — visually hidden
+         =========================== -->
+    <section class="visually-hidden" aria-label="Biography of Lori Terrizzi">
+        <div>
+            <p><a href="https://goaloop.org/about/#founder">Lori Terrizzi</a> is the CEO/Founder and Site Architect of <a href="https://entrepreneurship.columbia.edu/startup/goaloop-2/" target="_blank">GOALOOP - The Goal Market®, Connecting the World through Goals®</a>. Terrizzi holds an MFA from Columbia University in Film and is a Phi Beta Kappa graduate of Rutgers College, where she was awarded the Vanderbilt Scholarship for the Study of Art &amp; Music. Goaloop is the product of her life-long focus on freedom, issues of identity, and study of the relationship between words and images, form and content, equity and ability, truth and memory, power and substance, one of us and all of us.</p>
+
+            <p>Founding client of Yale Law School's Entrepreneurship &amp; Innovation Clinic, Goaloop is patent pending and answers a fundamental question: Will today's interconnectivity become a web of surveillance that traps us as prey, or a trellis that supports growth toward fulfillment? Goaloop ensures the latter: a personal trellis for each of us, connected to build a better world for everyone. <a href="https://medium.com/@goaloop/goaloop-the-possibilities-are-endless-4cd7b8fc0524" target="_blank">Goaloop helps you reach your goals and connects the world through goals.</a></p>
+
+            <p>Goaloop is an outgrowth of Terrizzi's prior position as Executive Director of the non-profit organization of writers aiding writers, founded by author and Board Member Salman Rushdie, continuing the work of the International Parliament of Writers in the United States. Principally working with the organization's VP, Board Member Caryl Phillips, the Board of Directors also included President Russell Banks, Carolyn Forché, Jayne Cortez, Derek Walcott, Michael Ondaatje, Dionne Brand, and Wole Soyinka, with Advisory Board Members Toni Morrison and Margaret Atwood.</p>
+
+            <p>While protecting the creative freedom of artists writing in dozens of languages, the Internet was becoming a new 'language.' "Scaling" entered the lexicon. What were we scaling? Would it turn everyone into a 'persecuted writer?' How could we rewrite the semiotics of the Internet to help everyone achieve freedom?</p>
+
+            <p>These questions dovetailed with the collapse of Lehman Brothers, where Terrizzi had previously worked, provoking her imagination to conceive a new, accessible, transparent market. While at Lehman, she worked on a project with Ernest Green of the Little Rock Nine, whose transition from the non-profit sector to Wall Street made a lasting impression. She then produced for American Movie Classics on a weekly television show awarded the Emmy® for Best Series in its category for two consecutive years, before founding a non-profit film platform on the eve of YouTube, mentored by Carnegie Corporation president Vartan Gregorian. Terrizzi channeled these experiences to design Goaloop – The Goal Market®, a new cross-sector marketplace where the only cost of entry is a goal — and where every goal becomes a Govie™, an automatic 'goal movie.'</p>
+
+            <p>As VP of the new James Baldwin Society at Rutgers, Terrizzi began writing Mr. Baldwin a letter. He had agreed to attend the inaugural meeting; he died two months before. The letter remained unfinished – until Terrizzi completed it in a forthcoming video that tells Goaloop's origin story. The James Baldwin Estate granted Terrizzi permission to include an interview of Mr. Baldwin in this video, "Goaloop – Street of Dreams," which includes two screens:</p>
+
+            <blockquote>
+                <p>"The framework in which we operate weighs on us too heavily to be borne and is about to kill us." — James Baldwin, 1963</p>
+            </blockquote>
+
+            <blockquote>
+                <p>"Dear Mr. Baldwin, We have grown a new framework. Love, Goaloop"</p>
+            </blockquote>
+
+            <p>The story "Raising Liberty: The Construction of the Statue of Liberty as Reconstruction Was Under Attack" served as a metaphor for the construction of Goaloop and can be <a href="https://medium.com/@goaloop/raising-liberty-1235946119aa" target="_blank">read here</a>; it is being made into a movie.</p>
+
+            <p>The granddaughter of Armenian Genocide survivors and Sicilian immigrants, and the daughter of first-generation professors, Terrizzi was raised in Amherst, Massachusetts, and now resides in New York City.</p>
+        </div>
+    </section>
+
 </body>
 </html>
