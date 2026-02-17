@@ -179,10 +179,10 @@
             align-items: center;
             justify-content: space-between;
             padding: 20px 40px;
-            font-family: 'futura-100', 'futura-100-book', 'Futura', system-ui, -apple-system, sans-serif;
+            font-family: 'sofia-pro', 'Sofia Pro', system-ui, -apple-system, sans-serif;
             background: rgba(0, 0, 0, 0.04);
-            -webkit-backdrop-filter: blur(4px);
-            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(1px);
             transition: background 0.3s ease, opacity 0.5s ease-in-out;
             opacity: 0;
             pointer-events: none;
@@ -200,7 +200,7 @@
 
         .nav-name {
             font-size: 18px;
-            font-weight: 400;
+            font-weight: 200;
             letter-spacing: 0.11em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.85);
@@ -208,7 +208,7 @@
 
         .nav-tagline {
             font-size: 13px;
-            font-weight: 400;
+            font-weight: 200;
             letter-spacing: 0.09em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.85);
@@ -223,7 +223,7 @@
 
         .nav-links a {
             font-size: 13px;
-            font-weight: 400;
+            font-weight: 200;
             letter-spacing: 0.09em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.85);
@@ -320,6 +320,94 @@
         @keyframes fadeOut {
             from { opacity: 1; }
             to   { opacity: 0; }
+        }
+
+        /* ===========================
+           PURPLE TREE SECTION – text overlays
+           =========================== */
+
+        .tree-section {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+        }
+
+        @supports not (aspect-ratio: 16 / 9) {
+            .tree-section {
+                height: 0;
+                padding-bottom: 56.25%;
+            }
+        }
+
+        .tree-section .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            z-index: 0;
+        }
+
+        .tree-text-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            font-family: 'avenir-lt-pro', 'Avenir', 'Avenir Next', system-ui, sans-serif;
+        }
+
+        .tree-text-overlay .phrase {
+            font-size: clamp(24px, 4.2vw, 52px);
+            font-weight: 300;
+            line-height: 1.35;
+            color: #ffffff;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .tree-text-overlay .phrase.visible {
+            opacity: 1;
+        }
+
+        .tree-text-overlay .line-one {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0 0.3em;
+        }
+
+        .site-footer {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+            text-align: center;
+            font-family: 'avenir-lt-pro', 'Avenir', 'Avenir Next', system-ui, sans-serif;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .site-footer.visible {
+            opacity: 1;
+        }
+
+        .site-footer p {
+            font-size: clamp(11px, 1.2vw, 14px);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
         }
 
         /* ===========================
@@ -515,19 +603,29 @@
     </section>
 
     <!-- ===========================
-         SECTION: Placeholder for colored tree sections
-         Add your tree images and text content here.
-         Each section follows this pattern:
-
-    <section class="full-section">
-        <img src="images/tree-color.jpg" alt="Description" class="bg-image" draggable="false">
-        <div class="section-content">
-            <h2>Your Text Here</h2>
-            <p>Supporting text here.</p>
-        </div>
-    </section>
-
+         PURPLE TREE SECTION – with sequential text reveals
          =========================== -->
+    <section class="tree-section">
+        <img
+            src="images/Lori-Terrizzi-Purple-Tree-16x9.jpg"
+            alt="Purple tree composed of Goaloop's goal symbol"
+            class="bg-image"
+            draggable="false"
+        >
+
+        <div class="tree-text-overlay">
+            <div class="line-one">
+                <span class="phrase" id="phrase-1">Nature creates borders.</span>
+                <span class="phrase" id="phrase-2">Men draw others.</span>
+            </div>
+            <span class="phrase" id="phrase-3">Goals map them for new generations.</span>
+        </div>
+
+        <footer class="site-footer" id="footer-text">
+            <p>Goaloop is patent pending.</p>
+            <p>© 2010 – 2026  Lori Terrizzi. All rights reserved.</p>
+        </footer>
+    </section>
 
     <!-- ===========================
          BIO – visually hidden
@@ -560,11 +658,36 @@
         </div>
     </section>
 
-    <!-- Reveal nav after purple tree appears (6.0s) -->
+    <!-- ===========================
+         SEQUENTIAL REVEAL SCRIPT
+         =========================================
+         Timing (all dissolves 0.5s ease-in-out):
+           6.5s  – Nav fades in
+           9.0s  – Footer fades in
+           11.5s – "Nature creates borders."
+           14.0s – "Men draw others."
+           16.5s – "Goals map them for new generations."
+         ========================================= -->
     <script>
         setTimeout(function () {
             document.querySelector('.site-nav').classList.add('visible');
         }, 6500);
+
+        setTimeout(function () {
+            document.getElementById('footer-text').classList.add('visible');
+        }, 9000);
+
+        setTimeout(function () {
+            document.getElementById('phrase-1').classList.add('visible');
+        }, 11500);
+
+        setTimeout(function () {
+            document.getElementById('phrase-2').classList.add('visible');
+        }, 14000);
+
+        setTimeout(function () {
+            document.getElementById('phrase-3').classList.add('visible');
+        }, 16500);
     </script>
 
 </body>
