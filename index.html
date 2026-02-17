@@ -412,10 +412,15 @@
         }
 
         .hero-social {
+            position: absolute;
+            bottom: 90px;
+            left: 0;
+            width: 100%;
+            z-index: 5;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
             pointer-events: none;
-            margin-top: 1.2em;
+            margin-top: 0;
         }
 
         .hero-social.visible {
@@ -735,8 +740,10 @@
                 </div>
                 <span class="phrase" id="phrase-3">Goals map them for new generations.<span class="curly-quote close" id="close-quote"></span></span>
                 <span class="phrase attribution" id="phrase-attribution">— Lori Terrizzi, CEO/Founder of GOALOOP – The Goal Market<span class="reg-mark">®</span></span>
+            </div>
 
-                <div class="social-icons hero-social" id="hero-social">
+            <!-- Social icons above footer -->
+            <div class="social-icons hero-social" id="hero-social">
                     <a href="https://goaloop.com/loriterrizzi" target="_blank" aria-label="Goaloop">
                         <img src="images/Goaloop-g-radio-signals.png" alt="Goaloop" class="icon-img" draggable="false">
                     </a>
