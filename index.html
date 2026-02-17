@@ -163,6 +163,7 @@
             line-height: 1.6;
             color: #ffffff;
             background: #000000;
+            overflow: hidden;
         }
 
         /* ===========================
@@ -204,15 +205,16 @@
             letter-spacing: 0.11em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.85);
+            line-height: 1;
         }
 
         .nav-tagline {
             font-size: 15px;
             font-weight: 200;
-            letter-spacing: 0.09em;
+            letter-spacing: 0.10em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.85);
-            margin-top: 0.064px;
+            margin-top: 1px;
         }
 
         .nav-tagline .reg-mark {
@@ -235,6 +237,7 @@
             color: rgba(255, 255, 255, 0.85);
             text-decoration: none;
             transition: color 0.2s ease;
+            cursor: pointer;
         }
 
         .nav-links a:hover,
@@ -261,11 +264,28 @@
         }
 
         /* ===========================
-           CSS CROSSFADE HERO
-           ===========================
-           Two 16:9 images dissolve in sequence, revealing a static purple tree.
-           Text and footer then dissolve in over the purple tree.
+           PAGE VIEWS
+           =========================== */
 
+        .page-view {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .page-view.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ===========================
+           CSS CROSSFADE HERO (Home)
+           ===========================
            TIMING:
              Slide 1 – holds 2.0s, dissolves 0.5s  → gone at 2.5s
              Slide 2 – holds 2.0s, dissolves 0.5s  → gone at 5.0s
@@ -280,17 +300,9 @@
         .hero-crossfade {
             position: relative;
             width: 100%;
-            margin: 0 auto;
+            height: 100vh;
             background-color: #000;
             overflow: hidden;
-            aspect-ratio: 16 / 9;
-        }
-
-        @supports not (aspect-ratio: 16 / 9) {
-            .hero-crossfade {
-                height: 0;
-                padding-bottom: 56.25%;
-            }
         }
 
         .hero-crossfade img {
@@ -343,7 +355,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 58%;
+            height: 55%;
             z-index: 5;
             display: flex;
             flex-direction: column;
@@ -376,7 +388,11 @@
             margin-bottom: 0.12em;
         }
 
-        .hero-footer {
+        /* ===========================
+           SECTION FOOTER (shared)
+           =========================== */
+
+        .section-footer {
             position: absolute;
             bottom: 40px;
             left: 0;
@@ -385,15 +401,9 @@
             text-align: center;
             pointer-events: none;
             font-family: 'sofia-pro', 'Sofia Pro', system-ui, -apple-system, sans-serif;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
         }
 
-        .hero-footer.visible {
-            opacity: 1;
-        }
-
-        .hero-footer p {
+        .section-footer p {
             font-size: clamp(11px, 1.2vw, 14px);
             font-weight: 200;
             color: rgba(255, 255, 255, 0.75);
@@ -401,25 +411,32 @@
             line-height: 1.3;
         }
 
-        .hero-footer p + p {
+        .section-footer p + p {
             margin-top: 1.1em;
         }
 
+        /* Hero footer starts hidden, fades in */
+        .section-footer.fade-in {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .section-footer.fade-in.visible {
+            opacity: 1;
+        }
+
         /* ===========================
-           FULL-SCREEN SECTIONS
+           TREE PAGE (Works, About)
            =========================== */
 
-        .full-section {
+        .tree-page {
             position: relative;
             width: 100%;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 100vh;
             overflow: hidden;
         }
 
-        .full-section .bg-image {
+        .tree-page .bg-image {
             position: absolute;
             top: 0;
             left: 0;
@@ -428,36 +445,6 @@
             object-fit: cover;
             display: block;
             z-index: 0;
-        }
-
-        .section-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            padding: 40px;
-            max-width: 1000px;
-        }
-
-        .section-content h2 {
-            font-size: clamp(28px, 5vw, 56px);
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            line-height: 1.2;
-            margin-bottom: 16px;
-            color: #ffffff;
-        }
-
-        .section-content p {
-            font-size: clamp(14px, 2vw, 20px);
-            font-weight: 300;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .section-content .small-text {
-            font-size: clamp(11px, 1.2vw, 14px);
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 24px;
         }
 
         /* ===========================
@@ -515,30 +502,6 @@
                 font-size: 14px;
             }
         }
-
-        /* ===========================
-           RESPONSIVE – HERO (mobile portrait)
-           =========================== */
-
-        @media (max-width: 768px) and (orientation: portrait) {
-            .hero-crossfade {
-                aspect-ratio: auto;
-                width: 100vh;
-                height: 100vw;
-                -webkit-transform: rotate(90deg) translateZ(0);
-                transform: rotate(90deg) translateZ(0);
-                -webkit-transform-origin: top left;
-                transform-origin: top left;
-                position: absolute;
-                top: 0;
-                left: 100vw;
-            }
-
-            .hero-crossfade img {
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
-            }
-        }
     </style>
 </head>
 <body>
@@ -559,19 +522,19 @@
         </button>
 
         <ul class="nav-links">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#works">Works</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a data-page="home" class="active">Home</a></li>
+            <li><a data-page="works">Works</a></li>
+            <li><a data-page="about">About</a></li>
             <li><a href="https://goaloop.com" target="_blank">Goaloop</a></li>
         </ul>
     </nav>
 
     <!-- ===========================
-         HERO: CSS CROSSFADE + TEXT OVERLAYS
+         PAGE: HOME (Purple Tree with crossfade intro)
          =========================== -->
-    <section id="home">
+    <div id="page-home" class="page-view active">
         <div class="hero-crossfade">
-            <!-- Slide 1: Swing® – "Goaloop began on a swing in a New York City apartment" -->
+            <!-- Slide 1: Swing® -->
             <img
                 src="images/Lori-Terrizzi-Hero-Image-16x9-1.png"
                 alt="Goaloop began on a swing in a New York City apartment – illustrated scene of a handmade convertible swing, built by Lori Terrizzi, suspended from an archway with the NYC skyline visible in the background"
@@ -579,7 +542,7 @@
                 draggable="false"
             >
 
-            <!-- Slide 2: Transcending Boundaries – "Welcome to Goaloop - The Goal Market®" -->
+            <!-- Slide 2: Transcending Boundaries -->
             <img
                 src="images/Lori-Terrizzi-Hero-Image-16x9-2.png"
                 alt="Welcome to Goaloop - The Goal Market® – Connecting the World through Goals® – Got a Goal®? Goaloop it! – Goaloop logo within a purple arch above the New York City skyline"
@@ -587,7 +550,7 @@
                 draggable="false"
             >
 
-            <!-- Static: Purple Tree – revealed after both dissolves, holds permanently -->
+            <!-- Static: Purple Tree -->
             <img
                 src="images/Lori-Terrizzi-Purple-Tree-16x9.jpg"
                 alt="Purple tree composed of Goaloop's goal symbol, three concentric circles"
@@ -595,7 +558,7 @@
                 draggable="false"
             >
 
-            <!-- Text overlay – dissolves in sequentially over purple tree -->
+            <!-- Text overlay -->
             <div class="hero-text-overlay">
                 <div class="line-one">
                     <span class="phrase" id="phrase-1">Nature creates borders.</span>
@@ -604,13 +567,51 @@
                 <span class="phrase" id="phrase-3">Goals map them for new generations.</span>
             </div>
 
-            <!-- Footer – dissolves in over purple tree -->
-            <footer class="hero-footer" id="footer-text">
+            <!-- Footer -->
+            <footer class="section-footer fade-in" id="footer-text">
                 <p>GOALOOP is patent pending.</p>
                 <p>© 2010 – 2026  Lori Terrizzi. All rights reserved.</p>
             </footer>
         </div>
-    </section>
+    </div>
+
+    <!-- ===========================
+         PAGE: WORKS (Green GOALOOP Tree)
+         =========================== -->
+    <div id="page-works" class="page-view">
+        <div class="tree-page">
+            <img
+                src="images/Lori-Terrizzi-Green-Tree-16x9.jpg"
+                alt="Green tree composed of Goaloop's goal symbol, three concentric circles"
+                class="bg-image"
+                draggable="false"
+            >
+
+            <footer class="section-footer">
+                <p>GOALOOP is patent pending.</p>
+                <p>© 2010 – 2026  Lori Terrizzi. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- ===========================
+         PAGE: ABOUT (Magenta GOALOOP Tree)
+         =========================== -->
+    <div id="page-about" class="page-view">
+        <div class="tree-page">
+            <img
+                src="images/Lori-Terrizzi-Magenta-Tree-16x9.jpg"
+                alt="Magenta tree composed of Goaloop's goal symbol, three concentric circles"
+                class="bg-image"
+                draggable="false"
+            >
+
+            <footer class="section-footer">
+                <p>GOALOOP is patent pending.</p>
+                <p>© 2010 – 2026  Lori Terrizzi. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
 
     <!-- ===========================
          BIO – visually hidden
@@ -644,16 +645,10 @@
     </section>
 
     <!-- ===========================
-         SEQUENTIAL REVEAL SCRIPT
-         =========================================
-         All dissolves 0.5s ease-in-out, 2.5s intervals:
-           6.5s  – Nav fades in
-           9.0s  – Footer fades in
-           11.5s – "Nature creates borders."
-           14.0s – "Men draw others."
-           16.5s – "Goals map them for new generations."
-         ========================================= -->
+         SCRIPTS
+         =========================== -->
     <script>
+        /* Sequential reveal on Home page */
         setTimeout(function () {
             document.querySelector('.site-nav').classList.add('visible');
         }, 6500);
@@ -673,6 +668,31 @@
         setTimeout(function () {
             document.getElementById('phrase-3').classList.add('visible');
         }, 16500);
+
+        /* Page navigation */
+        document.querySelectorAll('.nav-links a[data-page]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                var target = this.getAttribute('data-page');
+
+                /* Hide all pages */
+                document.querySelectorAll('.page-view').forEach(function (page) {
+                    page.classList.remove('active');
+                });
+
+                /* Show target page */
+                document.getElementById('page-' + target).classList.add('active');
+
+                /* Update active nav link */
+                document.querySelectorAll('.nav-links a[data-page]').forEach(function (a) {
+                    a.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                /* Close mobile menu if open */
+                document.querySelector('.nav-links').classList.remove('open');
+            });
+        });
     </script>
 
 </body>
