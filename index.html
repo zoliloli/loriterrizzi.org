@@ -214,7 +214,7 @@
             letter-spacing: 0.10em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.85);
-            margin-top: 1px;
+            margin-top: 1.08px;
         }
 
         .nav-tagline .reg-mark {
@@ -670,29 +670,41 @@
         }, 16500);
 
         /* Page navigation */
+        function showPage(target) {
+            document.querySelectorAll('.page-view').forEach(function (page) {
+                page.classList.remove('active');
+            });
+            document.getElementById('page-' + target).classList.add('active');
+            document.querySelectorAll('.nav-links a[data-page]').forEach(function (a) {
+                a.classList.remove('active');
+                if (a.getAttribute('data-page') === target) {
+                    a.classList.add('active');
+                }
+            });
+        }
+
         document.querySelectorAll('.nav-links a[data-page]').forEach(function (link) {
             link.addEventListener('click', function (e) {
                 e.preventDefault();
                 var target = this.getAttribute('data-page');
-
-                /* Hide all pages */
-                document.querySelectorAll('.page-view').forEach(function (page) {
-                    page.classList.remove('active');
-                });
-
-                /* Show target page */
-                document.getElementById('page-' + target).classList.add('active');
-
-                /* Update active nav link */
-                document.querySelectorAll('.nav-links a[data-page]').forEach(function (a) {
-                    a.classList.remove('active');
-                });
-                this.classList.add('active');
-
-                /* Close mobile menu if open */
+                window.location.hash = target === 'home' ? '' : target;
+                showPage(target);
                 document.querySelector('.nav-links').classList.remove('open');
             });
         });
+
+        /* Handle direct visits and back/forward */
+        function handleHash() {
+            var hash = window.location.hash.replace('#', '');
+            if (hash === 'works' || hash === 'about') {
+                showPage(hash);
+            } else {
+                showPage('home');
+            }
+        }
+
+        window.addEventListener('hashchange', handleHash);
+        if (window.location.hash) handleHash();
     </script>
 
 </body>
