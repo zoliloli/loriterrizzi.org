@@ -180,9 +180,9 @@
             justify-content: space-between;
             padding: 20px 40px;
             font-family: 'sofia-pro', 'Sofia Pro', system-ui, -apple-system, sans-serif;
-            background: rgba(0, 0, 0, 0.04);
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(1px);
+            background: rgba(0, 0, 0, 0.05);
+            -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
             transition: background 0.3s ease, opacity 0.5s ease-in-out;
             opacity: 0;
             pointer-events: none;
@@ -199,7 +199,7 @@
         }
 
         .nav-name {
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 200;
             letter-spacing: 0.11em;
             text-transform: uppercase;
@@ -207,12 +207,12 @@
         }
 
         .nav-tagline {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 200;
-            letter-spacing: 0.09em;
+            letter-spacing: 0.10em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.85);
-            margin-top: 2px;
+            margin-top: 1.25px;
         }
 
         .nav-links {
@@ -224,7 +224,7 @@
         .nav-links a {
             font-size: 13px;
             font-weight: 200;
-            letter-spacing: 0.09em;
+            letter-spacing: 0.10em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.85);
             text-decoration: none;
@@ -258,11 +258,17 @@
            CSS CROSSFADE HERO
            ===========================
            Two 16:9 images dissolve in sequence, revealing a static purple tree.
+           Text and footer then dissolve in over the purple tree.
 
            TIMING:
              Slide 1 – holds 2.0s, dissolves 0.5s  → gone at 2.5s
              Slide 2 – holds 2.0s, dissolves 0.5s  → gone at 5.0s
              Purple Tree – revealed at 5.0s, holds permanently
+             Nav – fades in at 6.5s
+             Footer – fades in at 9.0s
+             "Nature creates borders." – fades in at 11.5s
+             "Men draw others." – fades in at 14.0s
+             "Goals map them for new generations." – fades in at 16.5s
         */
 
         .hero-crossfade {
@@ -323,51 +329,27 @@
         }
 
         /* ===========================
-           PURPLE TREE SECTION – text overlays
+           TEXT OVERLAY on hero
            =========================== */
 
-        .tree-section {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-        }
-
-        @supports not (aspect-ratio: 16 / 9) {
-            .tree-section {
-                height: 0;
-                padding-bottom: 56.25%;
-            }
-        }
-
-        .tree-section .bg-image {
+        .hero-text-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            display: block;
-            z-index: 0;
-        }
-
-        .tree-text-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
+            z-index: 5;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 40px;
+            pointer-events: none;
             font-family: 'avenir-lt-pro', 'Avenir', 'Avenir Next', system-ui, sans-serif;
         }
 
-        .tree-text-overlay .phrase {
+        .hero-text-overlay .phrase {
             font-size: clamp(24px, 4.2vw, 52px);
             font-weight: 300;
             line-height: 1.35;
@@ -376,34 +358,35 @@
             transition: opacity 0.5s ease-in-out;
         }
 
-        .tree-text-overlay .phrase.visible {
+        .hero-text-overlay .phrase.visible {
             opacity: 1;
         }
 
-        .tree-text-overlay .line-one {
+        .hero-text-overlay .line-one {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 0 0.3em;
         }
 
-        .site-footer {
+        .hero-footer {
             position: absolute;
             bottom: 40px;
             left: 0;
             width: 100%;
-            z-index: 2;
+            z-index: 5;
             text-align: center;
+            pointer-events: none;
             font-family: 'avenir-lt-pro', 'Avenir', 'Avenir Next', system-ui, sans-serif;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
 
-        .site-footer.visible {
+        .hero-footer.visible {
             opacity: 1;
         }
 
-        .site-footer p {
+        .hero-footer p {
             font-size: clamp(11px, 1.2vw, 14px);
             font-weight: 300;
             color: rgba(255, 255, 255, 0.7);
@@ -572,7 +555,7 @@
     </nav>
 
     <!-- ===========================
-         HERO: CSS CROSSFADE
+         HERO: CSS CROSSFADE + TEXT OVERLAYS
          =========================== -->
     <section id="home">
         <div class="hero-crossfade">
@@ -599,32 +582,22 @@
                 class="slide-static"
                 draggable="false"
             >
-        </div>
-    </section>
 
-    <!-- ===========================
-         PURPLE TREE SECTION – with sequential text reveals
-         =========================== -->
-    <section class="tree-section">
-        <img
-            src="images/Lori-Terrizzi-Purple-Tree-16x9.jpg"
-            alt="Purple tree composed of Goaloop's goal symbol"
-            class="bg-image"
-            draggable="false"
-        >
-
-        <div class="tree-text-overlay">
-            <div class="line-one">
-                <span class="phrase" id="phrase-1">Nature creates borders.</span>
-                <span class="phrase" id="phrase-2">Men draw others.</span>
+            <!-- Text overlay – dissolves in sequentially over purple tree -->
+            <div class="hero-text-overlay">
+                <div class="line-one">
+                    <span class="phrase" id="phrase-1">Nature creates borders.</span>
+                    <span class="phrase" id="phrase-2">Men draw others.</span>
+                </div>
+                <span class="phrase" id="phrase-3">Goals map them for new generations.</span>
             </div>
-            <span class="phrase" id="phrase-3">Goals map them for new generations.</span>
-        </div>
 
-        <footer class="site-footer" id="footer-text">
-            <p>Goaloop is patent pending.</p>
-            <p>© 2010 – 2026  Lori Terrizzi. All rights reserved.</p>
-        </footer>
+            <!-- Footer – dissolves in over purple tree -->
+            <footer class="hero-footer" id="footer-text">
+                <p>Goaloop is patent pending.</p>
+                <p>© 2010 – 2026  Lori Terrizzi. All rights reserved.</p>
+            </footer>
+        </div>
     </section>
 
     <!-- ===========================
@@ -661,7 +634,7 @@
     <!-- ===========================
          SEQUENTIAL REVEAL SCRIPT
          =========================================
-         Timing (all dissolves 0.5s ease-in-out):
+         All dissolves 0.5s ease-in-out, 2.5s intervals:
            6.5s  – Nav fades in
            9.0s  – Footer fades in
            11.5s – "Nature creates borders."
