@@ -116,7 +116,7 @@
             },
             {
                 "@type": "VideoObject",
-                "name": "Goaloop – Street of Dreams",
+                "name": "Goaloop — Street of Dreams",
                 "description": "Goaloop's origin story video from a historical context, including the impact of James Baldwin, public art, and New York City.",
                 "creator": "Lori Terrizzi"
             },
@@ -129,7 +129,7 @@
             },
             {
                 "@type": "Article",
-                "name": "Goaloop – The Possibilities Are Endless",
+                "name": "Goaloop — The Possibilities Are Endless",
                 "url": "https://medium.com/@goaloop/goaloop-the-possibilities-are-endless-4cd7b8fc0524",
                 "author": "Jack Kim",
                 "about": [
@@ -293,14 +293,14 @@
            CSS CROSSFADE HERO (Home)
            ===========================
            TIMING:
-             Slide 1 – holds 2.0s, dissolves 0.5s  → gone at 2.5s
-             Slide 2 – holds 2.0s, dissolves 0.5s  → gone at 5.0s
-             Purple Tree – revealed at 5.0s, holds permanently
-             Nav – fades in at 6.5s
-             Footer – fades in at 9.0s
-             "Nature creates borders." – fades in at 11.5s
-             "Men draw others." – fades in at 14.0s
-             "Goals map them for new generations." – fades in at 16.5s
+             Slide 1 — holds 2.0s, dissolves 0.5s  → gone at 2.5s
+             Slide 2 — holds 2.0s, dissolves 0.5s  → gone at 5.0s
+             Purple Tree — revealed at 5.0s, holds permanently
+             Nav — fades in at 6.5s
+             Footer — fades in at 9.0s
+             "Nature creates borders." — fades in at 11.5s
+             "Men draw others." — fades in at 14.0s
+             "Goals map them for new generations." — fades in at 16.5s
         */
 
         .hero-crossfade {
@@ -394,6 +394,19 @@
             margin-bottom: 0.20em;
         }
 
+        .hero-text-overlay .attribution {
+            font-size: clamp(14px, 2vw, 24px);
+            font-weight: 200;
+            margin-top: 0.6em;
+            letter-spacing: 0.04em;
+        }
+
+        .hero-text-overlay .attribution .reg-mark {
+            font-size: 0.6em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
         /* ===========================
            SECTION FOOTER (shared)
            =========================== */
@@ -454,7 +467,7 @@
         }
 
         /* ===========================
-           VISUALLY HIDDEN (bio – crawlable, invisible)
+           VISUALLY HIDDEN (bio — crawlable, invisible)
            =========================== */
 
         .visually-hidden {
@@ -470,7 +483,7 @@
         }
 
         /* ===========================
-           RESPONSIVE – NAVIGATION
+           RESPONSIVE — NAVIGATION
            =========================== */
 
         @media (max-width: 768px) {
@@ -519,7 +532,7 @@
         <div class="nav-identity">
             <a href="https://goaloop.com/loriterrizzi" target="_blank" style="text-decoration:none;">
                 <span class="nav-name">Lori Terrizzi</span>
-                <span class="nav-tagline">Goaloop – The Goal Market<span class="reg-mark">®</span></span>
+                <span class="nav-tagline">Goaloop — The Goal Market<span class="reg-mark">®</span></span>
             </a>
         </div>
 
@@ -545,7 +558,7 @@
             <!-- Slide 1: Swing® -->
             <img
                 src="images/Lori-Terrizzi-Hero-Image-16x9-1.png"
-                alt="Goaloop began on a swing in a New York City apartment – illustrated scene of a handmade convertible swing, built by Lori Terrizzi, suspended from an archway with the NYC skyline visible in the background"
+                alt="Goaloop began on a swing in a New York City apartment — illustrated scene of a handmade convertible swing, built by Lori Terrizzi, suspended from an archway with the NYC skyline visible in the background"
                 class="slide-1"
                 draggable="false"
             >
@@ -553,7 +566,7 @@
             <!-- Slide 2: Transcending Boundaries -->
             <img
                 src="images/Lori-Terrizzi-Hero-Image-16x9-2.png"
-                alt="Welcome to Goaloop - The Goal Market® – Connecting the World through Goals® – Got a Goal®? Goaloop it! – Goaloop logo within a purple arch above the New York City skyline"
+                alt="Welcome to Goaloop - The Goal Market® — Connecting the World through Goals® — Got a Goal®? Goaloop it! — Goaloop logo within a purple arch above the New York City skyline"
                 class="slide-2"
                 draggable="false"
             >
@@ -569,16 +582,17 @@
             <!-- Text overlay -->
             <div class="hero-text-overlay">
                 <div class="line-one">
-                    <span class="phrase" id="phrase-1">Nature creates borders.</span>
+                    <span class="phrase" id="phrase-1">"Nature creates borders.</span>
                     <span class="phrase" id="phrase-2">Men draw others.</span>
                 </div>
-                <span class="phrase" id="phrase-3">Goals map them for new generations.</span>
+                <span class="phrase" id="phrase-3">Goals map them for new generations."</span>
+                <span class="phrase attribution" id="phrase-attribution">— Lori Terrizzi, CEO/Founder of GOALOOP - The Goal Market<span class="reg-mark">®</span></span>
             </div>
 
             <!-- Footer -->
             <footer class="section-footer fade-in" id="footer-text">
                 <p>GOALOOP is patent pending.</p>
-                <p>© 2010 – 2026  Lori Terrizzi. All rights reserved.</p>
+                <p>© 2010 — 2026  Lori Terrizzi. All rights reserved.</p>
             </footer>
         </div>
     </div>
@@ -597,7 +611,7 @@
 
             <footer class="section-footer">
                 <p>GOALOOP is patent pending.</p>
-                <p>© 2010 – 2026  Lori Terrizzi. All rights reserved.</p>
+                <p>© 2010 — 2026  Lori Terrizzi. All rights reserved.</p>
             </footer>
         </div>
     </div>
@@ -616,13 +630,13 @@
 
             <footer class="section-footer">
                 <p>GOALOOP is patent pending.</p>
-                <p>© 2010 – 2026  Lori Terrizzi. All rights reserved.</p>
+                <p>© 2010 — 2026  Lori Terrizzi. All rights reserved.</p>
             </footer>
         </div>
     </div>
 
     <!-- ===========================
-         BIO – visually hidden
+         BIO — visually hidden
          =========================== -->
     <section class="visually-hidden" aria-label="Biography of Lori Terrizzi">
         <div>
@@ -634,12 +648,12 @@
 
             <p>While protecting the creative freedom of artists writing in dozens of languages, the Internet was becoming a new 'language.' "Scaling" entered the lexicon. What were we scaling? Would it turn everyone into a 'persecuted writer?' How could we rewrite the semiotics of the Internet to help everyone achieve freedom?</p>
 
-            <p>These questions dovetailed with the collapse of Lehman Brothers, where Terrizzi had previously worked, provoking her imagination to conceive a new, accessible, transparent market. While at Lehman, she worked on a project with Ernest Green of the Little Rock Nine, whose transition from the non-profit sector to Wall Street made a lasting impression. She then produced for American Movie Classics on a weekly television show awarded the Emmy® for Best Series in its category for two consecutive years, before founding a non-profit film platform on the eve of YouTube, mentored by Carnegie Corporation president Vartan Gregorian. Terrizzi channeled these experiences to design Goaloop – The Goal Market®, a new cross-sector marketplace where the only cost of entry is a goal – and where every goal becomes a Govie™, an automatic 'goal movie.'</p>
+            <p>These questions dovetailed with the collapse of Lehman Brothers, where Terrizzi had previously worked, provoking her imagination to conceive a new, accessible, transparent market. While at Lehman, she worked on a project with Ernest Green of the Little Rock Nine, whose transition from the non-profit sector to Wall Street made a lasting impression. She then produced for American Movie Classics on a weekly television show awarded the Emmy® for Best Series in its category for two consecutive years, before founding a non-profit film platform on the eve of YouTube, mentored by Carnegie Corporation president Vartan Gregorian. Terrizzi channeled these experiences to design Goaloop — The Goal Market®, a new cross-sector marketplace where the only cost of entry is a goal — and where every goal becomes a Govie™, an automatic 'goal movie.'</p>
 
-            <p>As VP of the new James Baldwin Society at Rutgers, Terrizzi began writing Mr. Baldwin a letter. He had agreed to attend the inaugural meeting; he died two months before. The letter remained unfinished – until Terrizzi completed it in a forthcoming video that tells Goaloop's origin story. The James Baldwin Estate granted Terrizzi permission to include an interview of Mr. Baldwin in this video, "Goaloop – Street of Dreams," which includes two screens:</p>
+            <p>As VP of the new James Baldwin Society at Rutgers, Terrizzi began writing Mr. Baldwin a letter. He had agreed to attend the inaugural meeting; he died two months before. The letter remained unfinished — until Terrizzi completed it in a forthcoming video that tells Goaloop's origin story. The James Baldwin Estate granted Terrizzi permission to include an interview of Mr. Baldwin in this video, "Goaloop — Street of Dreams," which includes two screens:</p>
 
             <blockquote>
-                <p>"The framework in which we operate weighs on us too heavily to be borne and is about to kill us." – James Baldwin, 1963</p>
+                <p>"The framework in which we operate weighs on us too heavily to be borne and is about to kill us." — James Baldwin, 1963</p>
             </blockquote>
 
             <blockquote>
@@ -676,6 +690,10 @@
         setTimeout(function () {
             document.getElementById('phrase-3').classList.add('visible');
         }, 16500);
+
+        setTimeout(function () {
+            document.getElementById('phrase-attribution').classList.add('visible');
+        }, 19000);
 
         /* Page navigation */
         function showPage(target) {
