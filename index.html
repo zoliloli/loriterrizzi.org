@@ -199,6 +199,12 @@
             flex-direction: column;
         }
 
+        .nav-identity a {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
         .nav-name {
             font-size: 21px;
             font-weight: 200;
@@ -214,7 +220,7 @@
             letter-spacing: 0.10em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.85);
-            margin-top: 1.08px;
+            margin-top: 2px;
         }
 
         .nav-tagline .reg-mark {
@@ -511,8 +517,10 @@
          =========================== -->
     <nav class="site-nav">
         <div class="nav-identity">
-            <span class="nav-name">Lori Terrizzi</span>
-            <span class="nav-tagline">Goaloop – The Goal Market<span class="reg-mark">®</span></span>
+            <a href="https://goaloop.com/loriterrizzi" target="_blank" style="text-decoration:none;">
+                <span class="nav-name">Lori Terrizzi</span>
+                <span class="nav-tagline">Goaloop – The Goal Market<span class="reg-mark">®</span></span>
+            </a>
         </div>
 
         <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
@@ -552,7 +560,7 @@
 
             <!-- Static: Purple Tree -->
             <img
-                src="images/Lori-Terrizzi-Purple-Tree-16x9.jpg"
+                src="images/Lori-Terrizzi-Purple-Goaloop-Tree-16x9.jpg"
                 alt="Purple tree composed of Goaloop's goal symbol, three concentric circles"
                 class="slide-static"
                 draggable="false"
@@ -581,7 +589,7 @@
     <div id="page-works" class="page-view">
         <div class="tree-page">
             <img
-                src="images/Lori-Terrizzi-Green-Tree-16x9.jpg"
+                src="images/Lori-Terrizzi-Green-Goaloop-Tree-16x9.jpg"
                 alt="Green tree composed of Goaloop's goal symbol, three concentric circles"
                 class="bg-image"
                 draggable="false"
@@ -600,7 +608,7 @@
     <div id="page-about" class="page-view">
         <div class="tree-page">
             <img
-                src="images/Lori-Terrizzi-Magenta-Tree-16x9.jpg"
+                src="images/Lori-Terrizzi-Magenta-Goaloop-Tree-16x9.jpg"
                 alt="Magenta tree composed of Goaloop's goal symbol, three concentric circles"
                 class="bg-image"
                 draggable="false"
