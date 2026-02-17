@@ -451,7 +451,7 @@
         .tree-page {
             position: relative;
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             overflow: hidden;
         }
 
@@ -464,6 +464,55 @@
             object-fit: cover;
             display: block;
             z-index: 0;
+        }
+
+        /* Scrollable tree page (About) */
+        .tree-page.scrollable {
+            overflow-y: auto;
+            height: 100vh;
+        }
+
+        .tree-page.scrollable .bg-image {
+            position: fixed;
+        }
+
+        /* About page content */
+        .about-content {
+            position: relative;
+            z-index: 2;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 120px 40px 60px;
+            font-family: 'avenir-lt-pro', 'Avenir', 'Avenir Next', system-ui, sans-serif;
+            font-weight: 300;
+            font-size: clamp(15px, 1.8vw, 18px);
+            line-height: 1.7;
+            color: #ffffff;
+        }
+
+        .about-content p + p {
+            margin-top: 1.2em;
+        }
+
+        .about-content h1 {
+            font-size: clamp(28px, 3.5vw, 44px);
+            font-weight: 200;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 1.2em;
+        }
+
+        .about-content blockquote {
+            margin: 1.2em 0 1.2em 2em;
+            font-style: normal;
+        }
+
+        /* About footer — flows with content */
+        .section-footer.about-footer {
+            position: relative;
+            padding-bottom: 40px;
+            margin-top: 60px;
         }
 
         /* ===========================
@@ -620,7 +669,7 @@
          PAGE: ABOUT (Magenta GOALOOP Tree)
          =========================== -->
     <div id="page-about" class="page-view">
-        <div class="tree-page">
+        <div class="tree-page scrollable">
             <img
                 src="images/Lori-Terrizzi-Magenta-Goaloop-Tree-16x9.jpg"
                 alt="Magenta tree composed of Goaloop's goal symbol, three concentric circles"
@@ -628,7 +677,35 @@
                 draggable="false"
             >
 
-            <footer class="section-footer">
+            <div class="about-content">
+                <h1>Lori Terrizzi</h1>
+
+                <p><a href="https://goaloop.org/about/#founder">Lori Terrizzi</a> is the CEO/Founder and Site Architect of <a href="https://entrepreneurship.columbia.edu/startup/goaloop-2/" target="_blank">GOALOOP – The Goal Market®, Connecting the World through Goals®</a>. Terrizzi holds an MFA from Columbia University in Film and is a Phi Beta Kappa graduate of Rutgers College, where she was awarded the Vanderbilt Scholarship for the Study of Art &amp; Music. Goaloop is the product of her life-long focus on freedom, issues of identity, and study of the relationship between words and images, form and content, equity and ability, truth and memory, power and substance, one of us and all of us.</p>
+
+                <p>Founding client of Yale Law School's Entrepreneurship &amp; Innovation Clinic, Goaloop is patent pending and answers a fundamental question: Will today's interconnectivity become a web of surveillance that traps us as prey, or a trellis that supports growth toward fulfillment? Goaloop ensures the latter: a personal trellis for each of us, connected to build a better world for everyone. <a href="https://medium.com/@goaloop/goaloop-the-possibilities-are-endless-4cd7b8fc0524" target="_blank">Goaloop helps you reach your goals and connects the world through goals.</a></p>
+
+                <p>Goaloop is an outgrowth of Terrizzi's prior position as Executive Director of the non-profit organization of writers aiding writers, founded by Board Member Salman Rushdie, continuing the work of the International Parliament of Writers in the United States. Principally working with the organization's VP, Board Member Caryl Phillips, the Board of Directors also included President Russell Banks, Carolyn Forché, Jayne Cortez, Derek Walcott, Michael Ondaatje, Dionne Brand, and Wole Soyinka, with Advisory Board Members Toni Morrison and Margaret Atwood.</p>
+
+                <p>While protecting the creative freedom of artists writing in dozens of languages, the Internet was becoming a new 'language.' "Scaling" entered the lexicon. What were we scaling? Would it turn everyone into a 'persecuted writer?' How could we rewrite the semiotics of the Internet to help everyone achieve freedom?</p>
+
+                <p>These questions dovetailed with the collapse of Lehman Brothers, where Terrizzi had previously worked, provoking her imagination to conceive a new, accessible, transparent market. While at Lehman, she worked on a project with Ernest Green of the Little Rock Nine, whose transition from the non-profit sector to Wall Street made a lasting impression. She then produced for American Movie Classics on a weekly television show awarded the Emmy® for Best Series in its category for two consecutive years, before founding a non-profit film platform on the eve of YouTube, mentored by Carnegie Corporation president Vartan Gregorian. Terrizzi channeled these experiences to design Goaloop – The Goal Market®, a new cross-sector marketplace where the only cost of entry is a goal – and where every goal becomes a Govie™, an automatic 'goal movie.'</p>
+
+                <p>As VP of the new James Baldwin Society at Rutgers, Terrizzi began writing Mr. Baldwin a letter. He had agreed to attend the inaugural meeting; he died two months before. The letter remained unfinished – until Terrizzi completed it in a forthcoming video that tells Goaloop's origin story. The James Baldwin Estate granted Terrizzi permission to include an interview of Mr. Baldwin in this video, "Goaloop – Street of Dreams," which includes two screens:</p>
+
+                <blockquote>
+                    <p>"The framework in which we operate weighs on us too heavily to be borne and is about to kill us." – James Baldwin, 1963</p>
+                </blockquote>
+
+                <blockquote>
+                    <p>"Dear Mr. Baldwin, We have grown a new framework. Love, Goaloop"</p>
+                </blockquote>
+
+                <p>The story "Raising Liberty: The Construction of the Statue of Liberty as Reconstruction Was Under Attack" served as a metaphor for the construction of Goaloop and can be <a href="https://medium.com/@goaloop/raising-liberty-1235946119aa" target="_blank">read here</a>; it is being made into a movie.</p>
+
+                <p>The granddaughter of Armenian Genocide survivors and Sicilian immigrants, and the daughter of first-generation professors, Terrizzi was raised in Amherst, Massachusetts, and now resides in New York City.</p>
+            </div>
+
+            <footer class="section-footer about-footer">
                 <p>GOALOOP is patent pending.</p>
                 <p>© 2010 — 2026  Lori Terrizzi. All rights reserved.</p>
             </footer>
