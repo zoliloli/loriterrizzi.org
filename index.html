@@ -117,7 +117,7 @@
         .hero-text-overlay .line-one { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 0.3em; margin-bottom: 0.20em; }
         .hero-text-overlay .attribution { font-size: clamp(14px, 2vw, 24px); font-weight: 200; margin-top: 1.0em; letter-spacing: 0.04em; }
         .hero-text-overlay .attribution .reg-mark { font-size: 0.6em; vertical-align: super; line-height: 0; }
-        .hero-social { position: absolute; bottom: 108px; left: 0; width: 100%; z-index: 5; display: flex; justify-content: center; gap: 24px; opacity: 0; transition: opacity 0.5s ease-in-out; pointer-events: none; }
+        .hero-social { position: absolute; bottom: 120px; left: 0; width: 100%; z-index: 5; display: flex; justify-content: center; gap: 24px; opacity: 0; transition: opacity 0.5s ease-in-out; pointer-events: none; }
         .hero-social.visible { opacity: 1; pointer-events: auto; }
         .hero-social a { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex-shrink: 0; overflow: hidden; color: rgba(255,255,255,0.75); transition: color 0.2s ease, opacity 0.2s ease; }
         .hero-social a:hover { color: #fff; }
@@ -139,6 +139,7 @@
         .about-content blockquote { margin: 1.2em 0 1.2em 2em; font-style: normal; font-family: 'gill-sans-nova', 'Gill Sans', 'Gill Sans MT', system-ui, sans-serif; font-size: 20px; font-style: italic; }
         .about-content blockquote p { padding-left: 0; text-indent: 0; }
         .about-content blockquote .quote-attrib { font-family: 'avenir-next-world', 'Avenir Next', 'Avenir', system-ui, sans-serif; font-size: clamp(15px, 1.8vw, 18px); font-style: normal; padding-left: 1.5em; margin-top: 0.3em; }
+        .about-content blockquote .quote-attrib .emdash { display: inline-block; width: 1.2em; height: 0; border-top: 2px solid #fff; vertical-align: middle; margin-right: 0.4em; }
         .about-content blockquote + blockquote { margin-top: 1.2em; }
         .about-content blockquote + blockquote p { padding-left: 0; text-indent: 0; }
         .about-content a { color: #54c5f9; transition: color 0.2s ease; }
@@ -158,7 +159,7 @@
         .works-content h1 { font-family: 'avenir-next-world', 'Avenir Next', 'Avenir', system-ui, sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; margin-bottom: 1.05em; }
         .works-item { margin-bottom: 2.4em; }
         .works-item:last-child { margin-bottom: 0; }
-        .works-title { font-family: 'gill-sans-nova', 'Gill Sans', 'Gill Sans MT', system-ui, sans-serif; font-size: clamp(19px, 2.1vw, 23px); font-weight: 500; font-style: italic; margin-bottom: 0.29em; line-height: 1.5; }
+        .works-title { font-family: 'gill-sans-nova', 'Gill Sans', 'Gill Sans MT', system-ui, sans-serif; font-size: clamp(19px, 2.1vw, 23px); font-weight: 500; font-style: italic; margin-bottom: 0.23em; line-height: 1.5; }
         .works-desc { font-weight: 300; }
         .works-content a { color: #c886f2; transition: color 0.2s ease; }
         .works-content a:hover { color: #b664f0; }
@@ -294,7 +295,7 @@
                 <blockquote>
                     <p>The framework in which we operate weighs on us<br>
                     too heavily to be borne and is about to kill us.</p>
-                    <p class="quote-attrib"><span style="display:inline-block;width:1em;border-bottom:2px solid #fff;vertical-align:middle;margin-right:0.3em;position:relative;top:-0.15em;"></span>James Baldwin<br>
+                    <p class="quote-attrib"><span class="emdash"></span>James Baldwin<br>
                     &nbsp;&nbsp;&nbsp;New York, 1963</p>
                 </blockquote>
 
