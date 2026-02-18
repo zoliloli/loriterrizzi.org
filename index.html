@@ -93,6 +93,7 @@
         /* ── Nav ── */
         .site-nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; font-family: 'sofia-pro', 'Sofia Pro', system-ui, sans-serif; background: rgba(0,0,0,0.05); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); transition: background 0.3s ease, opacity 0.5s ease-in-out; opacity: 0; pointer-events: none; }
         .site-nav.visible { opacity: 1; pointer-events: auto; }
+        .site-nav.nav-solid { background: #000; backdrop-filter: none; -webkit-backdrop-filter: none; }
         .nav-identity { display: flex; flex-direction: column; }
         .nav-identity a { display: flex; flex-direction: column; text-decoration: none; }
         .nav-name { font-size: 21px; font-weight: 200; letter-spacing: 0.11em; text-transform: uppercase; color: rgba(255,255,255,0.85); line-height: 1; }
@@ -169,11 +170,9 @@
         /* ── iOS fallback: fixed bg doesn't work in mobile webkit ── */
         @supports (-webkit-touch-callout: none) {
             .parallax-bg { background-attachment: scroll; }
-            .floating-transparent { background-attachment: scroll; }
         }
         @media (max-width: 768px) {
             .parallax-bg { background-attachment: scroll; height: 56.25vw; }
-            .floating-transparent { background-attachment: scroll; }
         }
 
         /* ── Tree pages (Works, About) ── */
@@ -325,7 +324,7 @@
             <div class="parallax-bg" style="background-image: url('images/Lori-Terrizzi-Royal-Blue-Goaloop-Tree-2026-16-9.jpg');" aria-label="Royal blue Goaloop tree"></div>
 
             <!-- ── Floating 4 – Jack Kim Quote ── -->
-            <img class="floating-img" src="images/Goaloop-quote-Jack-Kim.jpg" alt="Goaloop quote by Jack Kim" draggable="false">
+            <img class="floating-img" src="images/Goaloop-Founding-Team-Jack-Juneho-Kim-quote.jpg" alt="Goaloop quote by Jack Kim" draggable="false">
 
             <!-- ── Parallax: BG 5 – Shadow Green Tree ── -->
             <div class="parallax-bg" style="background-image: url('images/Lori-Terrizzi-Shadow-Green-Goaloop-Tree-2026-16x9.jpg');" aria-label="Shadow green Goaloop tree"></div>
@@ -511,6 +510,20 @@
         /* ── Curly quotes ── */
         document.getElementById('open-quote').textContent = String.fromCharCode(8220);
         document.getElementById('close-quote').textContent = String.fromCharCode(8221);
+
+        /* ── Nav solid black when near bottom ── */
+        var homeScroll = document.getElementById('home-scroll');
+        var siteNav = document.querySelector('.site-nav');
+        homeScroll.addEventListener('scroll', function() {
+            var scrollBottom = homeScroll.scrollTop + homeScroll.clientHeight;
+            var totalHeight = homeScroll.scrollHeight;
+            /* Trigger when within 200px of the bottom */
+            if (totalHeight - scrollBottom < 200) {
+                siteNav.classList.add('nav-solid');
+            } else {
+                siteNav.classList.remove('nav-solid');
+            }
+        });
 
         /* ── Page navigation ── */
         function showPage(t) {
