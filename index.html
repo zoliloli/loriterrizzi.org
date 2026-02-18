@@ -108,7 +108,7 @@
         .page-view.active { opacity: 1; pointer-events: auto; }
 
         /* ── Home: scrollable container ── */
-        .home-scroll { height: 100vh; width: 100%; overflow-y: hidden; overflow-x: hidden; line-height: 0; font-size: 0; }
+        .home-scroll { height: 100vh; width: 100vw; max-width: 100vw; overflow-y: hidden; overflow-x: hidden; line-height: 0; font-size: 0; }
         .home-scroll.scrollable { overflow-y: auto; }
 
         /* ── Hero crossfade (first viewport) ── */
@@ -146,8 +146,8 @@
         .hero-footer p + p { margin-top: 1.1em; }
 
         /* ── Parallax sections ── */
-        .parallax-bg { height: 75vh; background-attachment: fixed; background-position: center center; background-size: cover; background-repeat: no-repeat; position: relative; }
-        .parallax-bg.floating-wrap { height: auto; overflow: hidden; width: 100%; } width: 100%; height: auto; position: relative; z-index: 2; vertical-align: top; margin: 0; padding: 0; }
+        .parallax-bg { height: 75vh; width: 100vw; background-attachment: fixed; background-position: center center; background-size: cover; background-repeat: no-repeat; position: relative; }
+        .parallax-bg.floating-wrap { height: auto; overflow: hidden; width: 100vw; } width: 100%; height: auto; position: relative; z-index: 2; vertical-align: top; margin: 0; padding: 0; }
         .parallax-bg + .floating-img,
         .floating-img + .parallax-bg,
         .hero-crossfade + .parallax-bg { margin-top: 0; }
@@ -499,8 +499,8 @@
         setTimeout(function(){ document.getElementById('phrase-3').classList.add('visible'); }, 16500);
         setTimeout(function(){ document.getElementById('phrase-attribution').classList.add('visible'); }, 19000);
         setTimeout(function(){ document.getElementById('hero-social').classList.add('visible'); }, 21500);
-        /* Unlock scrolling after attribution appears */
-        setTimeout(function(){ document.getElementById('home-scroll').classList.add('scrollable'); }, 19500);
+        /* Unlock scrolling after attribution fully visible */
+        setTimeout(function(){ document.getElementById('home-scroll').classList.add('scrollable'); }, 21000);
 
         /* ── Curly quotes ── */
         document.getElementById('open-quote').textContent = String.fromCharCode(8220);
