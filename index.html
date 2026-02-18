@@ -108,7 +108,8 @@
         .page-view.active { opacity: 1; pointer-events: auto; }
 
         /* ── Home: scrollable container ── */
-        .home-scroll { height: 100vh; overflow-y: auto; overflow-x: hidden; line-height: 0; font-size: 0; }
+        .home-scroll { height: 100vh; overflow-y: hidden; overflow-x: hidden; line-height: 0; font-size: 0; }
+        .home-scroll.scrollable { overflow-y: auto; }
 
         /* ── Hero crossfade (first viewport) ── */
         .hero-crossfade { position: relative; width: 100%; height: 100vh; background-color: #000; overflow: hidden; flex-shrink: 0; }
@@ -146,7 +147,7 @@
 
         /* ── Parallax sections ── */
         .parallax-bg { height: 75vh; background-attachment: fixed; background-position: center center; background-size: cover; background-repeat: no-repeat; position: relative; }
-        .floating-img { display: block; width: 100%; height: auto; position: relative; z-index: 2; vertical-align: top; margin: 0; padding: 0; }
+        .parallax-bg.floating-wrap { height: auto; overflow: hidden; } width: 100%; height: auto; position: relative; z-index: 2; vertical-align: top; margin: 0; padding: 0; }
         .parallax-bg + .floating-img,
         .floating-img + .parallax-bg,
         .hero-crossfade + .parallax-bg { margin-top: 0; }
@@ -304,14 +305,18 @@
             <!-- ── Parallax: BG 2 – Shadow Purple Pearls Tree ── -->
             <div class="parallax-bg" style="background-image: url('images/Lori-Terrizzi-Shadow-Purple-Pearls-Goaloop-Tree-2026-16-9.jpg');" aria-label="Shadow purple pearls Goaloop tree"></div>
 
-            <!-- ── Floating 2 – Love Revolution ── -->
-            <img class="floating-img" src="images/Lori-Terrizzi-Goaloop-Love-Revolution-2026.png" alt="Goaloop Love Revolution" draggable="false">
+            <!-- ── Floating 2 – Love Revolution (PNG with transparency) ── -->
+            <div class="parallax-bg floating-wrap" style="background-image: url('images/Lori-Terrizzi-Shadow-Purple-Pearls-Goaloop-Tree-2026-16-9.jpg');">
+                <img class="floating-img" src="images/Lori-Terrizzi-Goaloop-Love-Revolution-2026.png" alt="Goaloop Love Revolution" draggable="false">
+            </div>
 
             <!-- ── Parallax: BG 3 – Black & White Tree ── -->
             <div class="parallax-bg" style="background-image: url('images/Lori-Terrizzi-Black+White-Goaloop-Tree-16-9.jpg');" aria-label="Black and white Goaloop tree"></div>
 
-            <!-- ── Floating 3 – Peace Code ── -->
-            <img class="floating-img" src="images/Lori-Terrizzi-Goaloop-Peace-Code-2026.png" alt="Goaloop Peace Code" draggable="false">
+            <!-- ── Floating 3 – Peace Code (PNG with transparency) ── -->
+            <div class="parallax-bg floating-wrap" style="background-image: url('images/Lori-Terrizzi-Black+White-Goaloop-Tree-16-9.jpg');">
+                <img class="floating-img" src="images/Lori-Terrizzi-Goaloop-Peace-Code-2026.png" alt="Goaloop Peace Code" draggable="false">
+            </div>
 
             <!-- ── Parallax: BG 4 – Royal Blue Tree ── -->
             <div class="parallax-bg" style="background-image: url('images/Lori-Terrizzi-Royal-Blue-Goaloop-Tree-2026-16-9.jpg');" aria-label="Royal blue Goaloop tree"></div>
@@ -494,6 +499,8 @@
         setTimeout(function(){ document.getElementById('phrase-3').classList.add('visible'); }, 16500);
         setTimeout(function(){ document.getElementById('phrase-attribution').classList.add('visible'); }, 19000);
         setTimeout(function(){ document.getElementById('hero-social').classList.add('visible'); }, 21500);
+        /* Unlock scrolling after attribution appears */
+        setTimeout(function(){ document.getElementById('home-scroll').classList.add('scrollable'); }, 19500);
 
         /* ── Curly quotes ── */
         document.getElementById('open-quote').textContent = String.fromCharCode(8220);
