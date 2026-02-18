@@ -149,7 +149,8 @@
 
         /* ── Parallax sections ── */
         .parallax-bg { height: 75vh; width: 100%; background-attachment: fixed; background-position: center center; background-size: cover; background-repeat: no-repeat; position: relative; flex-shrink: 0; }
-        .parallax-bg.floating-wrap { height: auto; overflow: hidden; width: 100vw; } width: 100%; height: auto; position: relative; z-index: 2; vertical-align: top; margin: 0; padding: 0; }
+        .parallax-bg.floating-wrap { height: auto; overflow: hidden; width: 100vw; }
+        .floating-img { width: 100%; height: auto; position: relative; z-index: 2; vertical-align: top; margin: 0; padding: 0; }
         .parallax-bg + .floating-img,
         .floating-img + .parallax-bg,
         .hero-crossfade + .parallax-bg { margin-top: 0; }
@@ -244,7 +245,7 @@
 </head>
 <body>
 
-    <!-- ════════════════ NAV ════════════════ -->
+    <!-- ═══════════════ NAV ═══════════════ -->
     <nav class="site-nav">
         <div class="nav-identity">
             <a href="https://goaloop.com/loriterrizzi" target="_blank">
@@ -263,7 +264,7 @@
         </ul>
     </nav>
 
-    <!-- ════════════════ HOME ════════════════ -->
+    <!-- ═══════════════ HOME ═══════════════ -->
     <div id="page-home" class="page-view active">
         <div class="home-scroll" id="home-scroll">
 
@@ -349,7 +350,7 @@
         </div><!-- /home-scroll -->
     </div>
 
-    <!-- ════════════════ WORKS ════════════════ -->
+    <!-- ═══════════════ WORKS ═══════════════ -->
     <div id="page-works" class="page-view">
         <div class="tree-page scrollable">
             <img src="images/Lori-Terrizzi-Green-Goaloop-Tree-16x9.jpg" alt="Green tree composed of Goaloop's goal symbol, three concentric circles" class="bg-image" draggable="false">
@@ -427,7 +428,7 @@
         </div>
     </div>
 
-    <!-- ════════════════ ABOUT ════════════════ -->
+    <!-- ═══════════════ ABOUT ═══════════════ -->
     <div id="page-about" class="page-view">
         <div class="tree-page scrollable">
             <img src="images/Lori-Terrizzi-Magenta-Goaloop-Tree-16x9.jpg" alt="Magenta tree composed of Goaloop's goal symbol, three concentric circles" class="bg-image" draggable="false">
@@ -474,7 +475,7 @@
         </div>
     </div>
 
-    <!-- ════════════════ HIDDEN BIO (SEO) ════════════════ -->
+    <!-- ═══════════════ HIDDEN BIO (SEO) ═══════════════ -->
     <section class="visually-hidden" aria-label="Biography of Lori Terrizzi">
         <div>
             <p><a href="https://goaloop.org/about/#founder">Lori Terrizzi</a> is the CEO/Founder and Site Architect of <a href="https://entrepreneurship.columbia.edu/startup/goaloop-2/" target="_blank">GOALOOP – The Goal Market®, Connecting the World through Goals®</a>. Terrizzi holds an MFA from <a href="https://entrepreneurship.columbia.edu/startup/goaloop-2/" target="_blank">Columbia University</a> in Film and is a Phi Beta Kappa graduate of Rutgers College, where she was awarded the Vanderbilt Scholarship for the Study of Art &amp; Music. Goaloop is the product of her life-long focus on freedom, issues of identity, and study of the relationship between words and images, form and content, equity and ability, truth and memory, power and substance, one of us and all of us.</p>
@@ -490,7 +491,7 @@
         </div>
     </section>
 
-    <!-- ════════════════ SCRIPTS ════════════════ -->
+    <!-- ═══════════════ SCRIPTS ═══════════════ -->
     <script>
         /* ── Timed reveals (hero) ── */
         setTimeout(function(){ document.querySelector('.site-nav').classList.add('visible'); }, 6500);
