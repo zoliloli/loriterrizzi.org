@@ -148,7 +148,7 @@
         .hero-footer p + p { margin-top: 1.1em; }
 
         /* ── Parallax sections ── */
-        .parallax-bg { height: 75vh; width: 100%; background-attachment: scroll !important; background-position: center center; background-size: cover; background-repeat: no-repeat; position: relative; flex-shrink: 0; }
+        .parallax-bg { height: 75vh; width: 100%; background-attachment: fixed; background-position: center center; background-size: cover; background-repeat: no-repeat; position: relative; flex-shrink: 0; }
         .parallax-bg.floating-wrap { height: auto; overflow: hidden; width: 100%; background-attachment: fixed; background-size: cover; background-position: center; background-repeat: no-repeat; }
         .floating-img { width: 100%; height: auto; position: relative; z-index: 2; vertical-align: top; margin: 0; padding: 0; display: block; }
         .parallax-bg + .floating-img,
@@ -328,7 +328,7 @@
 
             <!-- ── Floating 4 — Jack Kim Quote (PNG with transparency over Royal Blue bg) ── -->
             <div class="parallax-bg floating-wrap" style="background-image: url('images/Lori-Terrizzi-Royal-Blue-Goaloop-Tree-2026-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-                <img class="floating-img" src="images/Goaloop-Founding-Team-Jack-Juneho-Kim-quote.jpg" alt="Goaloop founding team quote by Jack Juneho Kim" draggable="false">
+                <img class="floating-img" src="images/Goaloop-Founding-Team-Jack-Juneho-Kim-quote.png" alt="Goaloop founding team quote by Jack Juneho Kim" draggable="false">
             </div>
 
             <!-- ── Parallax: BG 5 — Shadow Green Tree ── -->
@@ -527,13 +527,6 @@
                 siteNav.classList.add('nav-solid');
             } else {
                 siteNav.classList.remove('nav-solid');
-            }
-            /* Parallax: background images move at 30% of scroll speed */
-            var bgs = homeScroll.querySelectorAll('.parallax-bg');
-            for (var i = 0; i < bgs.length; i++) {
-                var rect = bgs[i].getBoundingClientRect();
-                var offset = rect.top * 0.3;
-                bgs[i].style.backgroundPositionY = 'calc(50% + ' + offset + 'px)';
             }
         });
 
