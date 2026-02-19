@@ -149,8 +149,8 @@
 
         /* ── Parallax sections ── */
         .parallax-bg { height: 75vh; width: 100%; background-attachment: fixed; background-position: center center; background-size: cover; background-repeat: no-repeat; position: relative; flex-shrink: 0; }
-        .parallax-bg.floating-wrap { height: auto; overflow: hidden; width: 100vw; }
-        .floating-img { width: 100%; height: auto; position: relative; z-index: 2; vertical-align: top; margin: 0; padding: 0; }
+        .parallax-bg.floating-wrap { height: auto; overflow: hidden; width: 100%; background-attachment: fixed; background-size: cover; background-position: center; background-repeat: no-repeat; }
+        .floating-img { width: 100%; height: auto; position: relative; z-index: 2; vertical-align: top; margin: 0; padding: 0; display: block; }
         .parallax-bg + .floating-img,
         .floating-img + .parallax-bg,
         .hero-crossfade + .parallax-bg { margin-top: 0; }
@@ -171,9 +171,11 @@
         /* ── iOS fallback: fixed bg doesn't work in mobile webkit ── */
         @supports (-webkit-touch-callout: none) {
             .parallax-bg { background-attachment: scroll; }
+            .parallax-bg.floating-wrap { background-attachment: scroll; }
         }
         @media (max-width: 768px) {
             .parallax-bg { background-attachment: scroll; height: 56.25vw; }
+            .parallax-bg.floating-wrap { height: auto; background-attachment: scroll; }
         }
 
         /* ── Tree pages (Works, About) ── */
@@ -308,20 +310,26 @@
             <!-- ── Parallax: BG 2 – Shadow Purple Pearls Tree ── -->
             <div class="parallax-bg" style="background-image: url('images/Lori-Terrizzi-Shadow-Purple-Pearls-Goaloop-Tree-2026-16-9.jpg');" aria-label="Shadow purple pearls Goaloop tree"></div>
 
-            <!-- ── Floating 2 – Love Revolution (PNG with transparency) ── -->
-            <img class="floating-img" src="images/Lori-Terrizzi-Goaloop-Love-Revolution-2026.png" alt="Goaloop Love Revolution" draggable="false" style="background-image: url('images/Lori-Terrizzi-Shadow-Purple-Pearls-Goaloop-Tree-2026-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+            <!-- ── Floating 2 – Love Revolution (PNG with transparency over Purple Pearls bg) ── -->
+            <div class="parallax-bg floating-wrap" style="background-image: url('images/Lori-Terrizzi-Shadow-Purple-Pearls-Goaloop-Tree-2026-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+                <img class="floating-img" src="images/Lori-Terrizzi-Goaloop-Love-Revolution-2026.png" alt="Goaloop Love Revolution" draggable="false">
+            </div>
 
             <!-- ── Parallax: BG 3 – Black & White Tree ── -->
             <div class="parallax-bg" style="background-image: url('images/Lori-Terrizzi-Black+White-Goaloop-Tree-16-9.jpg');" aria-label="Black and white Goaloop tree"></div>
 
-            <!-- ── Floating 3 – Peace Code (PNG with transparency) ── -->
-            <img class="floating-img" src="images/Lori-Terrizzi-Goaloop-Peace-Code-2026.png" alt="Goaloop Peace Code" draggable="false" style="background-image: url('images/Lori-Terrizzi-Black+White-Goaloop-Tree-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+            <!-- ── Floating 3 – Peace Code (PNG with transparency over Black & White bg) ── -->
+            <div class="parallax-bg floating-wrap" style="background-image: url('images/Lori-Terrizzi-Black+White-Goaloop-Tree-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+                <img class="floating-img" src="images/Lori-Terrizzi-Goaloop-Peace-Code-2026.png" alt="Goaloop Peace Code" draggable="false">
+            </div>
 
             <!-- ── Parallax: BG 4 – Royal Blue Tree ── -->
             <div class="parallax-bg" style="background-image: url('images/Lori-Terrizzi-Royal-Blue-Goaloop-Tree-2026-16-9.jpg');" aria-label="Royal blue Goaloop tree"></div>
 
-            <!-- ── Floating 4 – Jack Kim Quote (PNG with transparency) ── -->
-            <img class="floating-img" src="images/Goaloop-Founding-Team-Jack-Juneho-Kim-quote.png" alt="Goaloop founding team quote by Jack Juneho Kim" draggable="false" style="background-image: url('images/Lori-Terrizzi-Shadow-Green-Goaloop-Tree-2026-16x9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+            <!-- ── Floating 4 – Jack Kim Quote (PNG with transparency over Green bg) ── -->
+            <div class="parallax-bg floating-wrap" style="background-image: url('images/Lori-Terrizzi-Shadow-Green-Goaloop-Tree-2026-16x9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+                <img class="floating-img" src="images/Goaloop-Founding-Team-Jack-Juneho-Kim-quote.png" alt="Goaloop founding team quote by Jack Juneho Kim" draggable="false">
+            </div>
 
             <!-- ── Parallax: BG 5 – Shadow Green Tree ── -->
             <div class="parallax-bg" style="background-image: url('images/Lori-Terrizzi-Shadow-Green-Goaloop-Tree-2026-16x9.jpg');" aria-label="Shadow green Goaloop tree"></div>
