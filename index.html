@@ -90,7 +90,6 @@
         body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #fff; background: #000; overflow-y: hidden; }
         a { text-decoration: none; }
 
-        /* —— Nav —— */
         .site-nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; font-family: 'sofia-pro', 'Sofia Pro', system-ui, sans-serif; background: rgba(0,0,0,0.05); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); transition: background 0.3s ease, opacity 0.5s ease-in-out; opacity: 0; pointer-events: none; }
         .site-nav.visible { opacity: 1; pointer-events: auto; }
         .site-nav.nav-solid { background: #000; backdrop-filter: none; -webkit-backdrop-filter: none; }
@@ -105,15 +104,12 @@
         .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
         .nav-toggle span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; transition: 0.3s; }
 
-        /* —— Page views —— */
         .page-view { position: absolute; top: 0; left: 0; width: 100%; max-width: 100%; height: 100vh; opacity: 0; pointer-events: none; transition: opacity 0.5s ease-in-out; overflow: hidden; }
         .page-view.active { opacity: 1; pointer-events: auto; }
 
-        /* —— Home: scrollable container —— */
         .home-scroll { height: 100vh; width: 100%; max-width: 100%; overflow-y: hidden; overflow-x: hidden; display: flex; flex-direction: column; }
         .home-scroll.scrollable { overflow-y: auto; }
 
-        /* —— Hero crossfade (first viewport) —— */
         .hero-crossfade { position: relative; width: 100%; height: 100vh; background-color: #000; overflow: hidden; flex-shrink: 0; }
         .hero-crossfade img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: translateZ(0); -webkit-transform: translateZ(0); will-change: opacity; }
         .hero-crossfade .slide-1 { z-index: 3; animation: fadeOut 0.5s ease-in-out 2.0s forwards; -webkit-animation: fadeOut 0.5s ease-in-out 2.0s forwards; }
@@ -122,7 +118,6 @@
         @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
         @-webkit-keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
 
-        /* —— Hero text overlay —— */
         .hero-text-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 58%; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; text-align: center; padding: 40px; pointer-events: none; font-family: 'avenir-lt-pro', 'Avenir', 'Avenir Next', system-ui, sans-serif; }
         .hero-text-overlay .phrase { font-size: clamp(24px, 4.2vw, 52px); font-weight: 300; line-height: 1.15; color: #fff; opacity: 0; transition: opacity 0.5s ease-in-out; }
         .hero-text-overlay .phrase.visible { opacity: 1; }
@@ -132,7 +127,6 @@
         .hero-text-overlay .attribution { font-size: clamp(14px, 2vw, 24px); font-weight: 200; margin-top: 1.8em; letter-spacing: 0.04em; }
         .hero-text-overlay .attribution .reg-mark { font-size: 0.6em; vertical-align: super; line-height: 0; }
 
-        /* —— Hero social icons —— */
         .hero-social { position: absolute; bottom: 113px; left: 0; width: 100%; z-index: 5; display: flex; justify-content: center; gap: 24px; opacity: 0; transition: opacity 0.5s ease-in-out; pointer-events: none; }
         .hero-social.visible { opacity: 1; pointer-events: auto; }
         .hero-social a { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex-shrink: 0; overflow: hidden; color: rgba(255,255,255,0.75); transition: color 0.2s ease, opacity 0.2s ease; }
@@ -141,13 +135,11 @@
         .hero-social .icon-img { display: block; width: 28px; height: 28px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.75; transition: opacity 0.2s ease; position: relative; }
         .hero-social a:hover .icon-img { opacity: 1; }
 
-        /* —— Hero footer —— */
         .hero-footer { position: absolute; bottom: 40px; left: 0; width: 100%; z-index: 5; text-align: center; pointer-events: none; font-family: 'sofia-pro', 'Sofia Pro', system-ui, sans-serif; opacity: 0; transition: opacity 0.5s ease-in-out; }
         .hero-footer.visible { opacity: 1; }
         .hero-footer p { font-size: clamp(11px, 1.2vw, 14px); font-weight: 200; color: rgba(255,255,255,0.75); letter-spacing: 0.09em; line-height: 1.3; }
         .hero-footer p + p { margin-top: 1.1em; }
 
-        /* —— Parallax sections —— */
         .parallax-bg { height: 75vh; width: 100%; background-attachment: fixed; background-position: center center; background-size: cover; background-repeat: no-repeat; position: relative; flex-shrink: 0; }
         .parallax-bg.floating-wrap { height: auto; overflow: hidden; width: 100%; background-attachment: fixed; background-size: cover; background-position: center; background-repeat: no-repeat; }
         .floating-img { width: 100%; height: auto; position: relative; z-index: 2; vertical-align: top; margin: 0; padding: 0; display: block; }
@@ -155,12 +147,10 @@
         .floating-img + .parallax-bg,
         .hero-crossfade + .parallax-bg { margin-top: 0; }
 
-        /* —— Home footer (bottom of scroll) —— */
         .home-footer { padding: 40px 0; text-align: center; background: #000; font-family: 'sofia-pro', 'Sofia Pro', system-ui, sans-serif; flex-shrink: 0; }
         .home-footer p { font-size: clamp(11px, 1.2vw, 14px); font-weight: 200; color: rgba(255,255,255,0.75); letter-spacing: 0.09em; line-height: 1.3; }
         .home-footer p + p { margin-top: 1.1em; }
 
-        /* —— Home social row (bottom of scroll) —— */
         .home-social { display: flex; justify-content: center; gap: 24px; padding: 0 0 20px; background: #000; flex-shrink: 0; }
         .home-social a { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex-shrink: 0; overflow: hidden; color: rgba(255,255,255,0.75); transition: color 0.2s ease, opacity 0.2s ease; }
         .home-social a:hover { color: #fff; }
@@ -168,7 +158,6 @@
         .home-social .icon-img { display: block; width: 28px; height: 28px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.75; transition: opacity 0.2s ease; }
         .home-social a:hover .icon-img { opacity: 1; }
 
-        /* —— iOS fallback: fixed bg doesn't work in mobile webkit —— */
         @supports (-webkit-touch-callout: none) {
             .parallax-bg { background-attachment: scroll; }
             .parallax-bg.floating-wrap { background-attachment: scroll; }
@@ -178,13 +167,11 @@
             .parallax-bg.floating-wrap { height: auto; background-attachment: scroll; }
         }
 
-        /* —— Tree pages (Works, About) —— */
         .tree-page { position: relative; width: 100%; min-height: 100vh; overflow: hidden; }
         .tree-page .bg-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 0; }
         .tree-page.scrollable { overflow-y: auto; height: 100vh; }
         .tree-page.scrollable .bg-image { position: fixed; }
 
-        /* —— About content —— */
         .about-content { position: relative; z-index: 2; max-width: 960px; margin: 0 auto; padding: 120px 40px 48px; font-family: 'avenir-next-world', 'Avenir Next', 'Avenir', system-ui, sans-serif; font-weight: 300; font-size: clamp(15px, 1.8vw, 18px); line-height: 1.7; color: #fff; text-shadow: 0 0 12px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.6), 0 0 60px rgba(0,0,0,0.4); }
         .about-content p + p { margin-top: 1.2em; }
         .about-content h1 { font-family: 'avenir-next-world', 'Avenir Next', 'Avenir', system-ui, sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; margin-bottom: 0.84em; }
@@ -208,7 +195,6 @@
         .about-footer p { font-size: clamp(11px, 1.2vw, 14px); font-weight: 200; color: rgba(255,255,255,0.75); letter-spacing: 0.09em; line-height: 1.3; }
         .about-footer p + p { margin-top: 1.1em; }
 
-        /* —— Works content —— */
         .works-content { position: relative; z-index: 2; max-width: 960px; margin: 0 auto; padding: 102px 40px 60px; font-family: 'avenir-next-world', 'Avenir Next', 'Avenir', system-ui, sans-serif; font-weight: 300; font-size: clamp(15px, 1.8vw, 18px); line-height: 1.7; color: #fff; text-shadow: 0 0 12px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.6), 0 0 60px rgba(0,0,0,0.4); }
         .works-content h1 { font-family: 'avenir-next-world', 'Avenir Next', 'Avenir', system-ui, sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; margin-bottom: 1.05em; }
         .works-item { margin-bottom: 2.4em; }
@@ -231,10 +217,8 @@
         .works-footer p { font-size: clamp(11px, 1.2vw, 14px); font-weight: 200; color: rgba(255,255,255,0.75); letter-spacing: 0.09em; line-height: 1.3; }
         .works-footer p + p { margin-top: 1.1em; }
 
-        /* —— Accessibility —— */
         .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
-        /* —— Mobile nav —— */
         @media (max-width: 768px) {
             .site-nav { padding: 16px 20px; }
             .nav-toggle { display: block; }
@@ -266,14 +250,14 @@
         </ul>
     </nav>
 
-    <!-- HOME -->
+    <!-- ═══════════════ HOME ═══════════════ -->
     <div id="page-home" class="page-view active">
         <div class="home-scroll" id="home-scroll">
 
             <!-- Hero crossfade -->
             <div class="hero-crossfade">
-                <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Hero-Image-16x9-1.png" alt="Goaloop began on a swing in a New York City apartment – illustrated scene of a handmade convertible swing, built by Lori Terrizzi, suspended from an archway with the NYC skyline visible in the background" class="slide-1" draggable="false">
-                <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Hero-Image-16x9-2.png" alt="Welcome to Goaloop - The Goal Market® – Connecting the World through Goals® – Got a Goal®? Goaloop it! – Goaloop logo within a purple arch above the New York City skyline" class="slide-2" draggable="false">
+                <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Hero-Image-16x9-1.png" alt="Goaloop began on a swing in a New York City apartment" class="slide-1" draggable="false">
+                <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Hero-Image-16x9-2.png" alt="Welcome to Goaloop - The Goal Market®" class="slide-2" draggable="false">
                 <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Purple-Goaloop-Tree-16x9.jpg" alt="Purple tree composed of Goaloop's goal symbol, three concentric circles" class="slide-static" draggable="false">
                 <div class="hero-text-overlay">
                     <div class="line-one">
@@ -301,53 +285,59 @@
                 </footer>
             </div>
 
-            <!-- Parallax: BG 1 – Shadow Orange Tree -->
+            <!-- BG 1 – Shadow Orange Tree -->
             <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Orange-Goaloop-Tree-16-9.jpg');" aria-label="Shadow orange Goaloop tree"></div>
 
-            <!-- Floating 1 – Swing Set Dawn / Statue of Liberty -->
+            <!-- Floating – Swing Set Dawn / Statue of Liberty -->
             <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Swing-Set-Dawn-Statue-of-Liberty-2026-16-9.jpg" alt="Goaloop swing set at dawn with the Statue of Liberty" draggable="false">
 
-            <!-- Parallax: BG 2 – Shadow Purple Pearls Tree -->
+            <!-- BG 2 – Shadow Purple Pearls Tree -->
             <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Purple-Pearls-Goaloop-Tree-2026-16-9.jpg');" aria-label="Shadow purple pearls Goaloop tree"></div>
 
-            <!-- Floating 2 – Love Revolution -->
+            <!-- Floating – Love Revolution -->
             <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Purple-Pearls-Goaloop-Tree-2026-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
                 <img class="floating-img" src="https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Love-Revolution-2026.png" alt="Goaloop Love Revolution" draggable="false">
             </div>
 
-            <!-- Parallax: Royal Purple Tree (2) -->
-            <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Royal-Purple-Goaloop-Tree-2026-16-9.jpg');" aria-label="Royal purple Goaloop tree"></div>
+            <!-- BG 3 – Pink Gold Tree -->
+            <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Pink-Gold-Goaloop-Tree-2026-16-9.jpg');" aria-label="Pink gold Goaloop tree"></div>
 
-            <!-- Parallax: BG 3 – Black & White Tree -->
+            <!-- BG 4 – Black & White Tree -->
             <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Black+White-Goaloop-Tree-16-9.jpg');" aria-label="Black and white Goaloop tree"></div>
 
-            <!-- Floating 3 – Peace Code -->
+            <!-- Floating – Peace Code -->
             <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Black+White-Goaloop-Tree-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
                 <img class="floating-img" src="https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Peace-Code-2026.png" alt="Goaloop Peace Code" draggable="false">
             </div>
 
-            <!-- Parallax: BG 4 – Royal Blue Tree -->
+            <!-- BG 5 – Royal Blue Tree -->
             <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Royal-Blue-Goaloop-Tree-2026-16-9.jpg');" aria-label="Royal blue Goaloop tree"></div>
 
-            <!-- Floating 4 – Jack Kim Quote -->
+            <!-- Floating – Jack Kim Quote -->
             <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Green-Goaloop-Tree-2026-16x9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
                 <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Founding-Team-Jack-Juneho-Kim-quote.png" alt="Goaloop founding team quote by Jack Juneho Kim" draggable="false">
             </div>
 
-            <!-- Floating 5 – Michael Chen PhD Quote -->
+            <!-- BG 6 – Royal Purple Tree -->
+            <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Royal-Purple-Goaloop-Tree-2026-16-9.jpg');" aria-label="Royal purple Goaloop tree"></div>
+
+            <!-- Floating – Michael Chen PhD Quote -->
             <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Green-Goaloop-Tree-2026-16x9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
                 <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Michael-Chen-PhD-quote-2026.png" alt="Goaloop team quote by Michael Chen PhD" draggable="false">
             </div>
 
-            <!-- Floating 6 – Sankha Dey Quote -->
+            <!-- BG 7 – Shadow Green Tree -->
+            <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Green-Goaloop-Tree-2026-16x9.jpg');" aria-label="Shadow green Goaloop tree"></div>
+
+            <!-- Floating – Shankha Dey Quote -->
             <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Green-Goaloop-Tree-2026-16x9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
                 <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Shankha-Dey-quote-2026.png" alt="Goaloop team quote by Shankha Dey" draggable="false">
             </div>
 
-            <!-- Parallax: BG 8 – Goaloop Coin -->
+            <!-- BG 8 – Goaloop Coin -->
             <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Coin-Home-Page-2026-16x9.jpg');" aria-label="Goaloop Coin"></div>
 
-            <!-- Social row + Footer (bottom of scroll) -->
+            <!-- Social row + Footer -->
             <div class="home-social">
                 <a href="https://goaloop.com/loriterrizzi" target="_blank" aria-label="Goaloop"><img src="https://loriterrizzi.org/images/Goaloop-g-radio-signals.png" alt="Goaloop" class="icon-img" draggable="false"></a>
                 <a href="https://www.linkedin.com/in/loriterrizzi/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
@@ -368,7 +358,7 @@
         </div>
     </div>
 
-    <!-- WORKS -->
+    <!-- ═══════════════ WORKS ═══════════════ -->
     <div id="page-works" class="page-view">
         <div class="tree-page scrollable">
             <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Green-Goaloop-Tree-16x9.jpg" alt="Green tree composed of Goaloop's goal symbol, three concentric circles" class="bg-image" draggable="false">
@@ -415,7 +405,7 @@
                 <div class="works-item">
                     <p class="works-title"><em>I Want My Privacy and Your Transparency</em></p>
                     <p class="works-desc">Essay (unpublished)</p>
-                    <p class="works-desc works-indent">How do we reconcile that we often want privacy for ourselves yet transparency from others online? Goaloop resolves this paradox. Excerpt:</p>
+                    <p class="works-desc works-indent">How do we reconcile that we often want privacy for ourselves yet transparency from others online? Goaloop's system resolves this paradox. Excerpt:</p>
                     <blockquote>
                         <p>"As we become more connected electronically, we know each other less, isolated in worlds of agreement as algorithms draw smaller islands around each of us. Seeking agreement is a form of comfort, an understandable temptation in an unjust world.</p>
                         <p>But these algorithms have been written to serve private profits, not us. Their collateral damage has been a stripping of our emotional investment in each other, of our exploration of each other. The result is a teaching of our emotional divestment in the other.</p>
@@ -446,7 +436,7 @@
         </div>
     </div>
 
-    <!-- ABOUT -->
+    <!-- ═══════════════ ABOUT ═══════════════ -->
     <div id="page-about" class="page-view">
         <div class="tree-page scrollable">
             <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Magenta-Goaloop-Tree-16x9.jpg" alt="Magenta tree composed of Goaloop's goal symbol, three concentric circles" class="bg-image" draggable="false">
@@ -470,7 +460,7 @@
                     Love,<br>
                     Goaloop</p>
                 </blockquote>
-                <p>The story <a href="#works"><em>Raising Liberty: The Construction of the Statue of Liberty as Reconstruction Was Under Attack</em></a> served as a metaphor for the construction of Goaloop; it is being made into a movie.</p>
+                <p>The story <a href="#works" onclick="showPage('works'); return false;"><em>Raising Liberty: The Construction of the Statue of Liberty as Reconstruction Was Under Attack</em></a> served as a metaphor for the construction of Goaloop; it is being made into a movie.</p>
                 <p>The granddaughter of Armenian Genocide survivors and Sicilian immigrants, and the daughter of first-generation professors, Terrizzi was raised in Amherst, Massachusetts, where she formed a mission at an early age to build upon the freedoms she was born into: Artistic freedom for all. Believing "no one is free until we all are free" makes equality a prerequisite for freedom. Artistic freedom is elusive without economic freedom.</p>
                 <p>A formative experience included moving to Florence, Italy for a semester in high school, where Renaissance men were known, but not one mention of a Renaissance woman; where art is not relegated to museums, it is woven into life; where high school exams were verbal "interrogations" in front of the class in Italian, and the curriculum included Design. Terrizzi later bypassed scholarship opportunities to study architecture at RISD and biomedical engineering at Rutgers, called instead to study history through art, and human character through film.</p>
                 <p>Insisting on turning the privilege of becoming who you truly are into a right, and make it within everyone's reach, Goaloop fulfills Terrizzi's personal mission to build a system that supports our nature, utilizing technology for growth and innovation, instead of becoming more like the machines we create. Goaloop integrates AI while advancing Human Intelligence.</p>
@@ -505,7 +495,6 @@
 
     <!-- SCRIPTS -->
     <script>
-        /* Timed reveals (hero) */
         setTimeout(function(){ document.querySelector('.site-nav').classList.add('visible'); }, 6500);
         setTimeout(function(){ document.getElementById('footer-text').classList.add('visible'); }, 9000);
         setTimeout(function(){ document.getElementById('phrase-1').classList.add('visible'); }, 11500);
@@ -515,11 +504,9 @@
         setTimeout(function(){ document.getElementById('hero-social').classList.add('visible'); }, 21500);
         setTimeout(function(){ document.getElementById('home-scroll').classList.add('scrollable'); }, 23000);
 
-        /* Curly quotes */
         document.getElementById('open-quote').textContent = String.fromCharCode(8220);
         document.getElementById('close-quote').textContent = String.fromCharCode(8221);
 
-        /* Nav solid black when near bottom */
         var homeScroll = document.getElementById('home-scroll');
         var siteNav = document.querySelector('.site-nav');
         homeScroll.addEventListener('scroll', function() {
@@ -532,7 +519,6 @@
             }
         });
 
-        /* Page navigation */
         function showPage(t) {
             document.querySelectorAll('.page-view').forEach(function(p){ p.classList.remove('active'); });
             document.getElementById('page-' + t).classList.add('active');
