@@ -502,7 +502,10 @@
                 </div>
             </div>
             <div style="max-width: 960px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2;">
-                <img src="https://loriterrizzi.org/images/G-Triptych-OKeefe-daVinci-Coin.png" alt="Triptych: O'Keeffe, da Vinci, and Goaloop Coin" style="width: 100%; height: auto; display: block;" draggable="false">
+                <picture>
+                    <source media="(max-width: 768px) and (orientation: portrait)" srcset="https://loriterrizzi.org/images/G-Triptych-OKeefe-daVinci-Coin-vertical.png">
+                    <img src="https://loriterrizzi.org/images/G-Triptych-OKeefe-daVinci-Coin.png" alt="Triptych: O'Keeffe, da Vinci, and Goaloop Coin" style="width: 100%; height: auto; display: block;" draggable="false">
+                </picture>
                 <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Coin-Natural-Currency.jpg" alt="Goaloop Coin – The world's first level marketplace, our natural currency" style="width: 100%; height: auto; display: block; margin-top: 0;" draggable="false">
             </div>
             <div class="works-social">
@@ -583,14 +586,15 @@
 
     <!-- SCRIPTS -->
     <script>
-        setTimeout(function(){ document.querySelector('.site-nav').classList.add('visible'); }, 6500);
-        setTimeout(function(){ document.getElementById('footer-text').classList.add('visible'); }, 9000);
-        setTimeout(function(){ document.getElementById('phrase-1').classList.add('visible'); }, 11500);
-        setTimeout(function(){ document.getElementById('phrase-2').classList.add('visible'); }, 14000);
-        setTimeout(function(){ document.getElementById('phrase-3').classList.add('visible'); }, 16500);
-        setTimeout(function(){ document.getElementById('phrase-attribution').classList.add('visible'); }, 19000);
-        setTimeout(function(){ document.getElementById('hero-social').classList.add('visible'); }, 21500);
-        setTimeout(function(){ document.getElementById('home-scroll').classList.add('scrollable'); }, 23000);
+        var isMobile = window.innerWidth <= 768;
+        setTimeout(function(){ document.querySelector('.site-nav').classList.add('visible'); }, isMobile ? 0 : 6500);
+        setTimeout(function(){ document.getElementById('footer-text').classList.add('visible'); }, isMobile ? 0 : 9000);
+        setTimeout(function(){ document.getElementById('phrase-1').classList.add('visible'); }, isMobile ? 0 : 11500);
+        setTimeout(function(){ document.getElementById('phrase-2').classList.add('visible'); }, isMobile ? 0 : 14000);
+        setTimeout(function(){ document.getElementById('phrase-3').classList.add('visible'); }, isMobile ? 0 : 16500);
+        setTimeout(function(){ document.getElementById('phrase-attribution').classList.add('visible'); }, isMobile ? 0 : 19000);
+        setTimeout(function(){ document.getElementById('hero-social').classList.add('visible'); }, isMobile ? 0 : 21500);
+        setTimeout(function(){ document.getElementById('home-scroll').classList.add('scrollable'); }, isMobile ? 0 : 23000);
 
         document.getElementById('open-quote').textContent = String.fromCharCode(8220);
         document.getElementById('close-quote').textContent = String.fromCharCode(8221);
