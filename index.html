@@ -282,6 +282,7 @@
         .works-footer p + p { margin-top: 1.1em; }
 
         .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+        .mobile-break { display: none; }
 
         @media (max-width: 768px) {
             .site-nav { padding: 16px 20px; }
@@ -290,6 +291,8 @@
             .nav-links.open { display: flex; }
             .nav-links li { padding: 12px 20px; }
             .nav-links a { font-size: 14px; }
+            .hero-text-overlay .line-one { flex-direction: column; gap: 0.7em; margin-bottom: 0.7em; }
+            .mobile-break { display: block; }
             .hero-social, .home-social, .about-social, .works-social { flex-wrap: wrap; }
             .hero-social { left: 50%; transform: translateX(-50%); width: 260px; }
             .home-social, .about-social, .works-social { max-width: 260px; margin-left: auto; margin-right: auto; }
@@ -332,7 +335,7 @@
                         <span class="phrase" id="phrase-2">Men draw others.</span>
                     </div>
                     <span class="phrase" id="phrase-3">&nbsp;&nbsp;&nbsp;Goals map them for new generations.<span class="curly-quote close" id="close-quote"></span></span>
-                    <span class="phrase attribution" id="phrase-attribution">— Lori Terrizzi, CEO/Founder of GOALOOP – The Goal Market<span class="reg-mark">®</span></span>
+                    <span class="phrase attribution" id="phrase-attribution">— Lori Terrizzi, CEO/Founder<br class="mobile-break"> of GOALOOP – The Goal Market<span class="reg-mark">®</span></span>
                 </div>
                 <div class="hero-social" id="hero-social">
                     <a href="https://goaloop.com/loriterrizzi" target="_blank" aria-label="Goaloop" style="position:relative;"><img src="https://loriterrizzi.org/images/Goaloop-g-radio-signals.png" alt="Goaloop" style="position:absolute;top:0;left:0;width:28px;height:28px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.75;" draggable="false"></a>
