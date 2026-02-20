@@ -99,7 +99,7 @@
         "hasCreativeWork": [
             { "@type": "CreativeWork", "name": "No man is an island. No land is a woman.", "description": "Poem by Lori Terrizzi", "creator": "Lori Terrizzi" },
             { "@type": "CreativeWork", "name": "Nature creates borders. Men draw others. Goals map them for new generations.", "text": "Nature creates borders. Men draw others. Goals map them for new generations.", "creator": "Lori Terrizzi", "description": "Quote by Lori Terrizzi, CEO/Founder of GOALOOP - The Goal Market®, featured in the forthcoming video 'Goaloop – New Generations'." },
-            { "@type": "VideoObject", "name": "Goaloop – Street of Dreams", "description": "Goaloop's origin story video from a historical context, including the impact of James Baldwin, public art, and New York City.", "creator": "Lori Terrizzi", "uploadDate": "2026-01-01", "thumbnailUrl": "https://loriterrizzi.org/images/Goaloop-Street-of-Dreams-video-thumbnail.jpg" },
+            { "@type": "VideoObject", "name": "Goaloop – Street of Dreams", "description": "Goaloop's origin story video from a historical context, including the impact of James Baldwin, film, public art, and New York City.", "creator": "Lori Terrizzi", "uploadDate": "2026-01-01T00:00:00-05:00", "thumbnailUrl": "https://loriterrizzi.org/images/Goaloop-Street-of-Dreams-video-thumbnail.jpg" },
             { "@type": "Article", "genre": "Movie Treatment", "name": "Raising Liberty: The Construction of the Statue of Liberty as Reconstruction Was Under Attack", "url": "https://medium.com/@goaloop/raising-liberty-1235946119aa", "creator": "Lori Terrizzi" },
             { "@type": "Article", "name": "Goaloop – The Possibilities Are Endless", "url": "https://medium.com/@goaloop/goaloop-the-possibilities-are-endless-4cd7b8fc0524", "author": "Jack Kim", "about": [ { "@type": "Organization", "name": "GOALOOP - The Goal Market®" }, { "@type": "Person", "name": "Lori Terrizzi" } ] },
             { "@type": "Article", "name": "3 Reasons to Intern at a Startup Company", "url": "https://business.cornell.edu/hub/2019/01/04/three-reasons-intern-startup/", "publisher": { "@type": "Organization", "name": "Cornell SC Johnson College of Business" }, "author": "Julio López Ramos", "about": [ { "@type": "Organization", "name": "GOALOOP - The Goal Market®" }, { "@type": "Person", "name": "Lori Terrizzi" } ] }
@@ -580,7 +580,10 @@
             if (totalHeight - scrollBottom < 200) {
                 siteNav.classList.add('nav-solid');
             } else {
-                siteNav.classList.remove('nav-solid');
+                siteNav.style.transition = 'none';
+            siteNav.classList.remove('nav-solid');
+            siteNav.offsetHeight;
+            siteNav.style.transition = '';
             }
         });
 
