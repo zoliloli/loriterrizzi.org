@@ -283,6 +283,7 @@
 
         .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
         .mobile-break { display: none; }
+        .desktop-break { display: inline; }
 
         @media (max-width: 768px) {
             .site-nav { padding: 16px 20px; }
@@ -295,6 +296,7 @@
             .hero-text-overlay .line-one { flex-direction: column; gap: 0.7em; margin-bottom: 0.7em; }
             .hero-text-overlay .attribution { font-weight: 300; }
             .mobile-break { display: block; }
+            .desktop-break { display: none; }
             .hero-social, .home-social, .about-social, .works-social { flex-wrap: wrap; }
             .hero-social { left: 50%; transform: translateX(-50%); width: 260px; }
             .home-social, .about-social, .works-social { max-width: 260px; margin-left: auto; margin-right: auto; }
@@ -360,7 +362,7 @@
                         <span class="phrase" id="phrase-1"><span class="curly-quote" id="open-quote"></span>Nature creates borders.</span>
                         <span class="phrase" id="phrase-2">Men draw others.</span>
                     </div>
-                    <span class="phrase" id="phrase-3">&nbsp;&nbsp;&nbsp;Goals map them for new generations.<span class="curly-quote close" id="close-quote"></span></span>
+                    <span class="phrase" id="phrase-3">&nbsp;&nbsp;&nbsp;Goals map them<br class="mobile-break"> for new generations.<span class="curly-quote close" id="close-quote"></span></span>
                     <span class="phrase attribution" id="phrase-attribution">— Lori Terrizzi, CEO/Founder<br class="mobile-break"> of GOALOOP – The Goal Market<span class="reg-mark">®</span></span>
                 </div>
                 <div class="hero-social" id="hero-social">
@@ -549,7 +551,7 @@
                 <p>These questions dovetailed with the collapse of Lehman Brothers, where Terrizzi had previously worked, provoking her imagination to conceive a new, accessible, transparent market. While at Lehman, she worked on a project with Ernest Green of the Little Rock Nine, whose transition from the non-profit sector to Wall Street made a lasting impression. She then produced for American Movie Classics on a weekly television show awarded the Emmy® for Best Series in its category for two consecutive years, before founding a non-profit film platform on the eve of YouTube, mentored by Carnegie Corporation president Vartan Gregorian. Terrizzi channeled these experiences to design Goaloop – The Goal Market®, a new cross-sector marketplace where the only cost of entry is a goal – and where every goal becomes a Govie™, an automatic 'goal movie.'</p>
                 <p>As VP of the new James Baldwin Society at Rutgers, Terrizzi began writing Mr. Baldwin a letter. He had agreed to attend the inaugural meeting; he died two months before. The letter remained unfinished – until Terrizzi completed it in a forthcoming video that tells Goaloop's origin story. The James Baldwin Estate granted Terrizzi permission to include an interview of Mr. Baldwin in this video, "Goaloop – Street of Dreams," which includes two screens:</p>
                 <blockquote>
-                    <p>The framework in which we operate weighs on us<br>
+                    <p>The framework in which we operate weighs on us<br class="desktop-break">
                     too heavily to be borne and is about to kill us.</p>
                     <p class="quote-attrib"><span class="emdash"></span>James Baldwin<br>
                     <span style="display:inline-block;width:1.6em;"></span>New York, 1963</p>
