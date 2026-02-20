@@ -172,7 +172,7 @@
         .page-view.active { opacity: 1; pointer-events: auto; }
 
         .home-scroll { height: 100vh; width: 100%; max-width: 100%; overflow-y: hidden; overflow-x: hidden; display: flex; flex-direction: column; }
-        .home-scroll.scrollable { overflow-y: auto; }
+        .home-scroll.scrollable { overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
 
         .hero-crossfade { position: relative; width: 100%; height: 100vh; background-color: #000; overflow: hidden; flex-shrink: 0; }
         .hero-crossfade img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: translateZ(0); -webkit-transform: translateZ(0); will-change: opacity; }
@@ -233,7 +233,7 @@
 
         .tree-page { position: relative; width: 100%; min-height: 100vh; overflow: hidden; }
         .tree-page .bg-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 0; }
-        .tree-page.scrollable { overflow-y: auto; height: 100vh; }
+        .tree-page.scrollable { overflow-y: auto; height: 100vh; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
         .tree-page.scrollable .bg-image { position: fixed; }
 
         .about-content { position: relative; z-index: 2; max-width: 960px; margin: 0 auto; padding: 120px 40px 48px; font-family: 'avenir-next-world', 'Avenir Next', 'Avenir', system-ui, sans-serif; font-weight: 300; font-size: clamp(15px, 1.8vw, 18px); line-height: 1.7; color: #fff; text-shadow: 0 0 12px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.6), 0 0 60px rgba(0,0,0,0.4); }
@@ -591,9 +591,13 @@
                 a.classList.remove('active');
                 if (a.getAttribute('data-page') === t) a.classList.add('active');
             });
+            siteNav.classList.remove('nav-solid');
             if (t === 'home') {
                 var hs = document.getElementById('home-scroll');
                 if (hs) hs.scrollTop = 0;
+            } else {
+                var tp = document.querySelector('#page-' + t + ' .tree-page.scrollable');
+                if (tp) tp.scrollTop = 0;
             }
         }
         document.querySelectorAll('.nav-links a[data-page]').forEach(function(link){
