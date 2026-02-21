@@ -20,6 +20,7 @@
     <link rel="me" href="https://medium.com/@goaloop/raising-liberty-1235946119aa">
     <link rel="me" href="https://business.cornell.edu/hub/2019/01/04/three-reasons-intern-startup/">
     <link rel="stylesheet" href="https://use.typekit.net/see6hef.css">
+    <link rel="stylesheet" href="/styles.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -148,194 +149,13 @@
     }
     </script>
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
-        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #fff; background: #000; overflow-y: hidden; }
-        a { text-decoration: none; }
-
-        .site-nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; font-family: 'sofia-pro', 'Sofia Pro', system-ui, sans-serif; background: rgba(0,0,0,0.05); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); transition: background 0.3s ease, opacity 0.5s ease-in-out; opacity: 0; pointer-events: none; }
-        .site-nav.visible { opacity: 1; pointer-events: auto; }
-        .site-nav.nav-solid { background: #000; backdrop-filter: none; -webkit-backdrop-filter: none; }
-        .nav-identity { display: flex; flex-direction: column; }
-        .nav-identity a { display: flex; flex-direction: column; text-decoration: none; }
-        .nav-name { font-size: 21px; font-weight: 200; letter-spacing: 0.11em; text-transform: uppercase; color: rgba(255,255,255,0.85); line-height: 1; }
-        .nav-tagline { font-size: 15px; font-weight: 200; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-top: 3px; }
-        .nav-tagline .reg-mark { font-size: 0.6em; vertical-align: super; line-height: 0; }
-        .nav-links { display: flex; gap: 32px; list-style: none; }
-        .nav-links a { font-size: 14px; font-weight: 200; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.85); text-decoration: none; transition: color 0.2s ease; cursor: pointer; }
-        .nav-links a:hover, .nav-links a.active { color: #fff; }
-        .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
-        .nav-toggle span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; transition: 0.3s; }
-
-        .page-view { position: absolute; top: 0; left: 0; width: 100%; max-width: 100%; height: 100vh; opacity: 0; pointer-events: none; transition: opacity 0.5s ease-in-out; overflow: hidden; }
-        .page-view.active { opacity: 1; pointer-events: auto; }
-
-        .home-scroll { height: 100vh; width: 100%; max-width: 100%; overflow-y: hidden; overflow-x: hidden; display: flex; flex-direction: column; }
-        .home-scroll.scrollable { overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
-
-        .hero-crossfade { position: relative; width: 100%; height: 100vh; background-color: #000; overflow: hidden; flex-shrink: 0; }
-        .hero-crossfade img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: translateZ(0); -webkit-transform: translateZ(0); will-change: opacity; }
-        .hero-crossfade .slide-1 { z-index: 3; animation: fadeOut 0.5s ease-in-out 2.0s forwards; -webkit-animation: fadeOut 0.5s ease-in-out 2.0s forwards; }
-        .hero-crossfade .slide-2 { z-index: 2; animation: fadeOut 0.5s ease-in-out 4.5s forwards; -webkit-animation: fadeOut 0.5s ease-in-out 4.5s forwards; }
-        .hero-crossfade .slide-static { z-index: 1; }
-        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
-        @-webkit-keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
-
-        .hero-text-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 58%; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; text-align: center; padding: 40px; pointer-events: none; font-family: 'avenir-lt-pro', 'Avenir', 'Avenir Next', system-ui, sans-serif; }
-        .hero-text-overlay .phrase { font-size: clamp(28.8px, 5.04vw, 62.4px); font-weight: 300; line-height: 1.15; color: #fff; opacity: 0; transition: opacity 0.5s ease-in-out; }
-        .hero-text-overlay .phrase.visible { opacity: 1; }
-        .hero-text-overlay .curly-quote { font-family: Georgia, 'Times New Roman', serif; font-size: 1.5em; line-height: 0; vertical-align: -0.25em; margin-right: 0.08em; }
-        .hero-text-overlay .curly-quote.close { margin-right: 0; margin-left: 0.08em; }
-        .hero-text-overlay .line-one { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 0.3em; margin-bottom: 0.90em; }
-        .hero-text-overlay .attribution { font-size: clamp(16.8px, 2.4vw, 28.8px); font-weight: 200; margin-top: 1.8em; letter-spacing: 0.04em; }
-        .hero-text-overlay .attribution .reg-mark { font-size: 0.6em; vertical-align: super; line-height: 0; }
-
-        .hero-social { position: absolute; bottom: 113px; left: 0; width: 100%; z-index: 5; display: flex; justify-content: center; gap: 24px; opacity: 0; transition: opacity 0.5s ease-in-out; pointer-events: none; }
-        .hero-social.visible { opacity: 1; pointer-events: auto; }
-        .hero-social a { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex-shrink: 0; overflow: hidden; color: rgba(255,255,255,0.75); transition: color 0.2s ease, opacity 0.2s ease; }
-        .hero-social a:hover { color: #fff; }
-        .hero-social svg { width: 100%; height: 100%; fill: currentColor; }
-        .hero-social .icon-img { display: block; width: 28px; height: 28px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.75; transition: opacity 0.2s ease; position: relative; }
-        .hero-social a:hover .icon-img { opacity: 1; }
-
-        .hero-footer { position: absolute; bottom: 40px; left: 0; width: 100%; z-index: 5; text-align: center; pointer-events: none; font-family: 'sofia-pro', 'Sofia Pro', system-ui, sans-serif; opacity: 0; transition: opacity 0.5s ease-in-out; }
-        .hero-footer.visible { opacity: 1; }
-        .hero-footer p { font-size: clamp(11px, 1.2vw, 14px); font-weight: 200; color: rgba(255,255,255,0.75); letter-spacing: 0.09em; line-height: 1.3; }
-        .hero-footer p + p { margin-top: 1.1em; }
-
-        .parallax-bg { height: 75vh; width: 100%; background-attachment: fixed; background-position: center center; background-size: cover; background-repeat: no-repeat; position: relative; flex-shrink: 0; }
-        .parallax-bg.floating-wrap { height: auto; overflow: hidden; width: 100%; background-attachment: fixed; background-size: cover; background-position: center; background-repeat: no-repeat; }
-        .floating-img { width: 100%; height: auto; position: relative; z-index: 2; vertical-align: top; margin: 0; padding: 0; display: block; }
-        .parallax-bg + .floating-img,
-        .floating-img + .parallax-bg,
-        .hero-crossfade + .parallax-bg { margin-top: 0; }
-
-        .home-footer { padding: 40px 0; text-align: center; background: #000; font-family: 'sofia-pro', 'Sofia Pro', system-ui, sans-serif; flex-shrink: 0; }
-        .home-footer p { font-size: clamp(11px, 1.2vw, 14px); font-weight: 200; color: rgba(255,255,255,0.75); letter-spacing: 0.09em; line-height: 1.3; }
-        .home-footer p + p { margin-top: 1.1em; }
-
-        .home-social { display: flex; justify-content: center; gap: 24px; padding: 0 0 20px; background: #000; flex-shrink: 0; }
-        .home-social a { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex-shrink: 0; overflow: hidden; color: rgba(255,255,255,0.75); transition: color 0.2s ease, opacity 0.2s ease; }
-        .home-social a:hover { color: #fff; }
-        .home-social svg { width: 100%; height: 100%; fill: currentColor; }
-        .home-social .icon-img { display: block; width: 28px; height: 28px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.75; transition: opacity 0.2s ease; }
-        .home-social a:hover .icon-img { opacity: 1; }
-
-        @supports (-webkit-touch-callout: none) {
-            .parallax-bg { background-attachment: scroll; }
-            .parallax-bg.floating-wrap { background-attachment: scroll; }
-        }
-        @media (max-width: 768px) {
-            .parallax-bg { background-attachment: scroll; height: 56.25vw; }
-            .parallax-bg.floating-wrap { height: auto; background-attachment: scroll; }
-        }
-
-        .tree-page { position: relative; width: 100%; min-height: 100vh; overflow: hidden; }
-        .tree-page .bg-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 0; }
-        .tree-page.scrollable { overflow-y: auto; height: 100vh; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
-        .tree-page.scrollable .bg-image { position: fixed; }
-
-        .about-content { position: relative; z-index: 2; max-width: 960px; margin: 0 auto; padding: 120px 40px 48px; font-family: 'avenir-next-world', 'Avenir Next', 'Avenir', system-ui, sans-serif; font-weight: 400; font-size: clamp(15px, 1.8vw, 18px); line-height: 1.7; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.8), 0 0 24px rgba(0,0,0,0.6), 0 0 60px rgba(0,0,0,0.45), 0 0 120px rgba(0,0,0,0.3), 0 0 200px rgba(0,0,0,0.15); }
-        .about-content p + p { margin-top: 1.2em; }
-        .about-content h1 { font-family: 'avenir-next-world', 'Avenir Next', 'Avenir', system-ui, sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; margin-bottom: 0.84em; }
-        .about-content blockquote { margin: 1.2em 0 1.2em 2em; font-style: normal; font-family: 'gill-sans-nova', 'Gill Sans', 'Gill Sans MT', system-ui, sans-serif; font-size: 20px; font-style: italic; }
-        .about-content blockquote p { padding-left: 0; text-indent: 0; }
-        .about-content blockquote .quote-attrib { font-family: 'avenir-next-world', 'Avenir Next', 'Avenir', system-ui, sans-serif; font-size: clamp(15px, 1.8vw, 18px); font-style: normal; padding-left: 1.5em; margin-top: 0.3em; }
-        .about-content blockquote .quote-attrib .emdash { display: inline-block; width: 1.2em; height: 0; border-top: 2px solid #fff; vertical-align: middle; margin-right: 0.4em; }
-        .about-content blockquote + blockquote { margin-top: 1.2em; }
-        .about-content blockquote + blockquote p { padding-left: 0; text-indent: 0; }
-        .about-content a { color: #54c5f9; transition: color 0.2s ease; }
-        .about-content a:hover { color: #05a2f4; }
-        .about-content a:visited { color: #aee2fa; }
-        .about-profile { display: block; width: 320px; height: auto; margin: 24px auto 0; border-radius: 0; position: relative; z-index: 2; }
-        .about-social { display: flex; justify-content: center; gap: 24px; margin-top: 60px; position: relative; z-index: 2; }
-        .about-social a { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; color: rgba(255,255,255,0.75); transition: color 0.2s ease, opacity 0.2s ease; }
-        .about-social a:hover { color: #fff; }
-        .about-social svg { width: 100%; height: 100%; fill: currentColor; }
-        .about-social .icon-img { width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.75; transition: opacity 0.2s ease; }
-        .about-social a:hover .icon-img { opacity: 1; }
-        .about-footer { position: relative; bottom: auto; padding-bottom: 40px; margin-top: 60px; text-align: center; font-family: 'sofia-pro', 'Sofia Pro', system-ui, sans-serif; pointer-events: none; z-index: 2; }
-        .about-footer p { font-size: clamp(11px, 1.2vw, 14px); font-weight: 200; color: rgba(255,255,255,0.75); letter-spacing: 0.09em; line-height: 1.3; }
-        .about-footer p + p { margin-top: 1.1em; }
-
-        .works-content { position: relative; z-index: 2; max-width: 960px; margin: 0 auto; padding: 102px 40px 60px; font-family: 'avenir-next-world', 'Avenir Next', 'Avenir', system-ui, sans-serif; font-weight: 400; font-size: clamp(15px, 1.8vw, 18px); line-height: 1.7; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.8), 0 0 24px rgba(0,0,0,0.6), 0 0 60px rgba(0,0,0,0.45), 0 0 120px rgba(0,0,0,0.3), 0 0 200px rgba(0,0,0,0.15); }
-        .works-content h1 { font-family: 'avenir-next-world', 'Avenir Next', 'Avenir', system-ui, sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; margin-bottom: 1.05em; }
-        .works-item { margin-bottom: 2.4em; }
-        .works-item:last-child { margin-bottom: 0; }
-        .works-title { font-family: 'gill-sans-nova', 'Gill Sans', 'Gill Sans MT', system-ui, sans-serif; font-size: clamp(19px, 2.1vw, 23px); font-weight: 500; font-style: italic; margin-bottom: 0.23em; line-height: 1.5; }
-        .works-desc { font-weight: 400; }
-        .works-content a { color: #d0face; transition: color 0.2s ease; }
-        .works-content a:hover { color: #f69efb; }
-        .works-content a:visited { color: #c6f6c4; }
-        .works-content blockquote { margin: 1.2em 0 1.2em 2em; }
-        .works-content blockquote p + p { margin-top: 1.2em; }
-        .works-indent { text-indent: 3em; }
-        .works-social { display: flex; justify-content: center; gap: 24px; margin-top: 60px; position: relative; z-index: 2; }
-        .works-social a { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; color: rgba(255,255,255,0.75); transition: color 0.2s ease, opacity 0.2s ease; }
-        .works-social a:hover { color: #fff; }
-        .works-social svg { width: 100%; height: 100%; fill: currentColor; }
-        .works-social .icon-img { width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.75; transition: opacity 0.2s ease; }
-        .works-social a:hover .icon-img { opacity: 1; }
-        .works-footer { position: relative; bottom: auto; padding-bottom: 40px; margin-top: 60px; text-align: center; font-family: 'sofia-pro', 'Sofia Pro', system-ui, sans-serif; pointer-events: none; z-index: 2; }
-        .works-footer p { font-size: clamp(11px, 1.2vw, 14px); font-weight: 200; color: rgba(255,255,255,0.75); letter-spacing: 0.09em; line-height: 1.3; }
-        .works-footer p + p { margin-top: 1.1em; }
-
-        .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-        .mobile-break { display: none; }
-        .desktop-break { display: inline; }
-        .desktop-spaces { display: inline; }
-
-        @media (max-width: 768px) {
-            .site-nav { padding: 16px 20px; }
-            .nav-toggle { display: block; }
-            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; flex-direction: column; gap: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 10px 0; }
-            .nav-links.open { display: flex; }
-            .nav-links li { padding: 12px 20px; }
-            .nav-links a { font-size: 14px; }
-            .hero-text-overlay { height: 63%; }
-            .hero-text-overlay .line-one { flex-direction: column; gap: 0.7em; margin-bottom: 0.7em; }
-            .hero-text-overlay .attribution { font-weight: 300; }
-            .mobile-break { display: block; }
-            .desktop-break { display: none; }
-            .desktop-spaces { display: none; }
-            .hero-crossfade .slide-1, .hero-crossfade .slide-2 { display: none; }
-            .hero-social { display: none; }
-            .hero-social, .home-social, .about-social, .works-social { flex-wrap: wrap; }
-            .hero-social { left: 50%; transform: translateX(-50%); width: 260px; }
-            .home-social, .about-social, .works-social { max-width: 260px; margin-left: auto; margin-right: auto; }
-        }
-
-        /* Mobile landscape */
-        @media (max-width: 896px) and (max-height: 500px) and (orientation: landscape) {
-            .site-nav { top: 0; left: 0; width: auto; height: 100vh; flex-direction: column; align-items: flex-start; padding: 12px 6px; gap: 8px; background: rgba(0,0,0,0.1); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-            .nav-identity { display: none; }
-            .nav-toggle { display: block; }
-            .nav-links { position: static; width: auto; flex-direction: column; gap: 0; background: none; backdrop-filter: none; padding: 0; }
-            .nav-links li { padding: 6px 0; }
-            .nav-links a { font-size: 12px; }
-            .hero-crossfade { height: 100vh; }
-            .hero-crossfade img { object-fit: contain; }
-            .hero-text-overlay { height: auto; top: 8%; justify-content: flex-start; padding: 16px 40px 16px 60px; }
-            .hero-text-overlay .phrase { font-size: clamp(18px, 3vw, 32px); }
-            .hero-text-overlay .attribution { font-size: clamp(13px, 1.8vw, 20px); margin-top: 0.8em; }
-            .hero-text-overlay .line-one { flex-direction: row; gap: 0 0.3em; margin-bottom: 0.5em; }
-            .hero-social { display: none; }
-            .hero-footer { bottom: 8px; padding-left: 50px; }
-            .hero-footer p { font-size: 10px; }
-            .hero-footer p + p { margin-top: 0.3em; }
-            .parallax-bg { height: auto; min-height: 0; }
-            .parallax-bg::after { content: ''; display: block; padding-bottom: 56.25%; }
-            .parallax-bg.floating-wrap { height: auto; }
-            .parallax-bg.floating-wrap::after { display: none; }
-            .about-content, .works-content { padding: 60px 40px 60px 60px; }
-        }
+        body { overflow-y: hidden; }
     </style>
 </head>
 <body>
 
     <!-- NAV -->
-    <nav class="site-nav">
+    <nav class="site-nav home-nav-hidden">
         <div class="nav-identity">
             <a href="https://goaloop.com/loriterrizzi" target="_blank">
                 <span class="nav-name">Lori Terrizzi</span>
@@ -346,100 +166,31 @@
             <span></span><span></span><span></span>
         </button>
         <ul class="nav-links">
-            <li><a data-page="home" class="active">Home</a></li>
-            <li><a data-page="works">Works</a></li>
-            <li><a data-page="about">About</a></li>
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/works.html">Works</a></li>
+            <li><a href="/about.html">About</a></li>
             <li><a href="https://goaloop.com" target="_blank">Goaloop</a></li>
         </ul>
     </nav>
 
-    <!-- ═══════════════ HOME ═══════════════ -->
-    <div id="page-home" class="page-view active">
-        <div class="home-scroll" id="home-scroll">
+    <!-- HOME -->
+    <div class="home-scroll" id="home-scroll">
 
-            <!-- Hero crossfade -->
-            <div class="hero-crossfade">
-                <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Hero-Image-16x9-1.png" alt="Goaloop began on a swing in a New York City apartment" class="slide-1" draggable="false">
-                <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Hero-Image-16x9-2.png" alt="Welcome to Goaloop - The Goal Market®" class="slide-2" draggable="false">
-                <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Purple-Goaloop-Tree-16x9.jpg" alt="Purple tree composed of Goaloop's goal symbol, three concentric circles" class="slide-static" draggable="false">
-                <div class="hero-text-overlay">
-                    <div class="line-one">
-                        <span class="phrase" id="phrase-1"><span class="curly-quote" id="open-quote"></span>Nature creates borders.</span>
-                        <span class="phrase" id="phrase-2">Men draw others.</span>
-                    </div>
-                    <span class="phrase" id="phrase-3"><span class="desktop-spaces">&nbsp;&nbsp;&nbsp;</span>Goals map them<br class="mobile-break"> for new generations.<span class="curly-quote close" id="close-quote"></span></span>
-                    <span class="phrase attribution" id="phrase-attribution">— Lori Terrizzi, CEO/Founder<br class="mobile-break"> of GOALOOP – The Goal Market<span class="reg-mark">®</span></span>
+        <!-- Hero crossfade -->
+        <div class="hero-crossfade">
+            <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Hero-Image-16x9-1.png" alt="Goaloop began on a swing in a New York City apartment" class="slide-1" draggable="false">
+            <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Hero-Image-16x9-2.png" alt="Welcome to Goaloop - The Goal Market®" class="slide-2" draggable="false">
+            <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Purple-Goaloop-Tree-16x9.jpg" alt="Purple tree composed of Goaloop's goal symbol, three concentric circles" class="slide-static" draggable="false">
+            <div class="hero-text-overlay">
+                <div class="line-one">
+                    <span class="phrase" id="phrase-1"><span class="curly-quote" id="open-quote"></span>Nature creates borders.</span>
+                    <span class="phrase" id="phrase-2">Men draw others.</span>
                 </div>
-                <div class="hero-social" id="hero-social">
-                    <a href="https://goaloop.com/loriterrizzi" target="_blank" aria-label="Goaloop" style="position:relative;"><img src="https://loriterrizzi.org/images/Goaloop-g-radio-signals.png" alt="Goaloop" style="position:absolute;top:0;left:0;width:28px;height:28px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.75;" draggable="false"></a>
-                    <a href="https://www.linkedin.com/in/loriterrizzi/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-                    <a href="https://www.youtube.com/goaloop" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-                    <a href="https://www.instagram.com/goaloop/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 11-2.88 0 1.441 1.441 0 012.88 0z"/></svg></a>
-                    <a href="https://x.com/goaloop" target="_blank" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zm-1.22 19.694h2.038L6.486 3.239H4.298L17.681 20.847z"/></svg></a>
-                    <a href="https://bsky.app/profile/goaloop.bsky.social" target="_blank" aria-label="Bluesky"><svg viewBox="0 0 24 24"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.596 6.449.77 2.819 3.516 3.745 6.104 3.471-3.75.521-7.145 2.06-3.549 7.159 3.857 4.713 6.356-1.236 6.849-3.012.493 1.776 2.428 7.461 6.849 3.012 3.596-5.1.201-6.638-3.549-7.159 2.588.274 5.334-.652 6.104-3.471C19.622 9.418 20 4.458 20 3.768c0-.688-.139-1.86-.902-2.203-.659-.299-1.664-.621-4.3 1.24C12.046 4.747 9.087 8.686 8 10.8h4z" transform="translate(2 2) scale(0.833)"/></svg></a>
-                    <a href="https://medium.com/@goaloop" target="_blank" aria-label="Medium"><svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg></a>
-                    <a href="https://www.pinterest.com/goaloop/" target="_blank" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12.017 24 18.635 24 24 18.633 24 12.013 24 5.393 18.635 0 12.017 0z"/></svg></a>
-                    <a href="https://wellfound.com/company/goaloop/people" target="_blank" aria-label="Wellfound"><svg viewBox="0 0 26 22"><path d="M0 0l5.2 20h2.4L11 7.5 14.4 20h2.4L22 0h-3.4l-2.8 13.5L12.4 0H9.6L6.2 13.5 3.4 0H0z"/><circle cx="22.5" cy="7" r="2.8"/><circle cx="22.5" cy="16.5" r="2.8"/></svg></a>
-                    <a href="https://www.facebook.com/goaloop" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-                </div>
-                <footer class="hero-footer" id="footer-text">
-                    <p>GOALOOP is patent pending.</p>
-                    <p>© 2010 – 2026  Lori Terrizzi. All rights reserved.</p>
-                </footer>
+                <span class="phrase" id="phrase-3"><span class="desktop-spaces">&nbsp;&nbsp;&nbsp;</span>Goals map them<br class="mobile-break"> for new generations.<span class="curly-quote close" id="close-quote"></span></span>
+                <span class="phrase attribution" id="phrase-attribution">— Lori Terrizzi, CEO/Founder<br class="mobile-break"> of GOALOOP – The Goal Market<span class="reg-mark">®</span></span>
             </div>
-
-            <!-- BG 1 – Shadow Orange Tree -->
-            <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Orange-Goaloop-Tree-16-9.jpg');" aria-label="Shadow orange Goaloop tree"></div>
-
-            <!-- Floating – Swing Set Dawn / Statue of Liberty -->
-            <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Swing-Set-Dawn-Statue-of-Liberty-2026-16-9.jpg" alt="Goaloop swing set at dawn with the Statue of Liberty" draggable="false">
-
-            <!-- BG 2 – Gold Magenta Tree -->
-            <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Gold-Magenta-Goaloop-Tree-2026-16-9.jpg');" aria-label="Gold magenta Goaloop tree"></div>
-
-            <!-- Floating – Love Revolution -->
-            <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Purple-Pearls-Goaloop-Tree-2026-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-                <img class="floating-img" src="https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Love-Revolution-2026.png" alt="Goaloop Love Revolution" draggable="false">
-            </div>
-
-            <!-- BG 3 – Black & White Tree -->
-            <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Black+White-Goaloop-Tree-16-9.jpg');" aria-label="Black and white Goaloop tree"></div>
-
-            <!-- Floating – Peace Code -->
-            <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Purple-Goaloop-Tree-16x9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-                <img class="floating-img" src="https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Peace-Code-2026.png" alt="Goaloop Peace Code" draggable="false">
-            </div>
-
-            <!-- BG 5 – Pink Gold Tree -->
-            <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Teal-Goaloop-Tree-2026-16-9.jpg');" aria-label="Teal Goaloop tree"></div>
-
-            <!-- Floating – Jack Kim Quote -->
-            <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Orange-Goaloop-Tree-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-                <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Founding-Team-Jack-Juneho-Kim-quote.png" alt="Goaloop founding team quote by Jack Juneho Kim" draggable="false">
-            </div>
-
-            <!-- BG 6 – Royal Purple Tree -->
-            <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Pink-Gold-Goaloop-Tree-2026-16-9.jpg');" aria-label="Pink gold Goaloop tree"></div>
-
-            <!-- Floating – Michael Chen PhD Quote -->
-            <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Teal-Goaloop-Tree-2026-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-                <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Michael-Chen-PhD-quote-2026.png" alt="Goaloop team quote by Michael Chen PhD" draggable="false">
-            </div>
-
-            <!-- BG 7 – Shadow Green Tree -->
-            <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Green-Goaloop-Tree-2026-16x9.jpg');" aria-label="Shadow green Goaloop tree"></div>
-
-            <!-- Floating – Shankha Dey Quote -->
-            <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Purple-Goaloop-Tree-16x9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-                <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Shankha-Dey-quote-2026.png" alt="Goaloop team quote by Shankha Dey" draggable="false">
-            </div>
-
-            <!-- BG 8 – Goaloop Coin -->
-            <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Coin-Home-Page-2026-16x9.jpg');" aria-label="Goaloop Coin"></div>
-
-            <!-- Social row + Footer -->
-            <div class="home-social">
-                <a href="https://goaloop.com/loriterrizzi" target="_blank" aria-label="Goaloop"><img src="https://loriterrizzi.org/images/Goaloop-g-radio-signals.png" alt="Goaloop" class="icon-img" draggable="false"></a>
+            <div class="hero-social" id="hero-social">
+                <a href="https://goaloop.com/loriterrizzi" target="_blank" aria-label="Goaloop" style="position:relative;"><img src="https://loriterrizzi.org/images/Goaloop-g-radio-signals.png" alt="Goaloop" style="position:absolute;top:0;left:0;width:28px;height:28px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.75;" draggable="false"></a>
                 <a href="https://www.linkedin.com/in/loriterrizzi/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
                 <a href="https://www.youtube.com/goaloop" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
                 <a href="https://www.instagram.com/goaloop/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 11-2.88 0 1.441 1.441 0 012.88 0z"/></svg></a>
@@ -450,147 +201,79 @@
                 <a href="https://wellfound.com/company/goaloop/people" target="_blank" aria-label="Wellfound"><svg viewBox="0 0 26 22"><path d="M0 0l5.2 20h2.4L11 7.5 14.4 20h2.4L22 0h-3.4l-2.8 13.5L12.4 0H9.6L6.2 13.5 3.4 0H0z"/><circle cx="22.5" cy="7" r="2.8"/><circle cx="22.5" cy="16.5" r="2.8"/></svg></a>
                 <a href="https://www.facebook.com/goaloop" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
             </div>
-            <footer class="home-footer">
-                <p>GOALOOP is patent pending.</p>
-                <p>© 2010 – 2026  Lori Terrizzi. All rights reserved.</p>
-            </footer>
-
-        </div>
-    </div>
-
-    <!-- ═══════════════ WORKS ═══════════════ -->
-    <div id="page-works" class="page-view">
-        <div class="tree-page scrollable">
-            <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Green-Goaloop-Tree-16x9.jpg" alt="Green tree composed of Goaloop's goal symbol, three concentric circles" class="bg-image" draggable="false">
-            <div class="works-content">
-                <h1>Selected Works</h1>
-                <div class="works-item">
-                    <p class="works-title"><em>GOALOOP – The Goal Market®, Connecting the World Through Goals®</em></p>
-                    <p class="works-desc">Patent pending digital civic infrastructure for liberty, justice, and market power for all.</p>
-                    <p class="works-desc works-indent">With a background in art and art history, an MFA in Film, and having lived in Florence, Italy, Renaissance architects were at the forefront of my mind as I designed Goaloop; both architecture and the Internet are mathematical landscapes. Designing blueprints with musical harmonic principles for more harmonious structures, they believed mathematical harmony reflected a divine order that produced not only aural, but also aesthetic and spatial beauty, creating forms that align with moral excellence and, in the hands of Leonardo da Vinci, physical well-being. I sought to apply a similar philosophy when designing Goaloop (in beta at <a href="https://goaloop.com" target="_blank">Goaloop.com</a>).</p>
-                </div>
-                <div class="works-item">
-                    <p class="works-title"><em>Toni Morrison's Rose</em></p>
-                    <p class="works-desc">Essay (unpublished)</p>
-                    <p class="works-desc works-indent">Goaloop grew from Toni Morrison's rose to bloom the entire world. This visual progression, her long-stemmed, single crimson rose, taking root as if a seed, was with me as I taught myself to code Goaloop's demo site, hand-drawing every image to reflect human creativity over machine. This process met the influence of Renaissance artists, turning Goaloop's structure into a flower that blooms as a fractal that infinitely blooms others. This mirrors Ms. Morrison's response when an admirer handed her this rose: to give it to another special someone, rippling appreciation and generosity. Goaloop cultivates fertile digital soil to help everyone <a href="#about" onclick="showPage('about'); return false;">grow into who they were born to be</a>, regardless of parentage or zip code.</p>
-                </div>
-                <div class="works-item">
-                    <p class="works-title"><em>Raising Liberty: The Construction of the Statue of Liberty as Reconstruction Was Under Attack</em></p>
-                    <p class="works-desc">Movie treatment: <a href="https://medium.com/@goaloop/raising-liberty-1235946119aa" target="_blank">https://medium.com/@goaloop/raising-liberty-1235946119aa</a></p>
-                    <p class="works-desc works-indent">The fractured symbol of freedom and democracy, conceived by a writer more than twenty years before, and produced by an artist, artisans, architects and engineers, was unified and raised by a foundation funded by the people. It was a visionary achievement of the arts, technology and citizens of the world. She stands as a question: Who are we to be?</p>
-                </div>
-                <div class="works-item">
-                    <p class="works-title"><em>Goaloop &#x2013; Street of Dreams</em></p>
-                    <p class="works-desc works-indent">Goaloop's forthcoming origin story video from a historical context, including the impact of James Baldwin, film, public art, and New York City. The James Baldwin Estate granted permission to include Mr. Baldwin in this video, set to Wynton Marsalis's 'Street of Dreams' (4:09 min).</p>
-                </div>
-                <div class="works-item">
-                    <p class="works-title"><em>Goaloop &#x2013; New Generations</em></p>
-                    <p class="works-desc works-indent">Upcoming video for launch of Goaloop beyond beta set to the final 63 seconds of Tchaikovsky's 1812 Overture, Op. 49, conducted by Antal Doráti, with cannons and bells:<br>"Nature creates borders. Men draw others. Goals map them for new generations."</p>
-                </div>
-                <div class="works-item">
-                    <p class="works-title"><em>Dear Dr. King, We Have Built a New Edifice</em></p>
-                    <p class="works-desc">Memoir, including the making of Goaloop (unpublished). Excerpt:</p>
-                    <blockquote>
-                        <p>"Dear Dr. King,</p>
-                        <p>We are still struggling to grow a system of peace and equality from the violent and unequal system at our roots. The economic movement you sparked in the days before your death is unfinished. How much longer will it take to reform our economic system? How many more lives and lifetimes and libraries will this take?</p>
-                        <p>What if we were to start all over again, knowing what we know now? What if we could create a brand new economic system that would work within the current one, accepting of the status quo, and, as it is adopted, would grow us out of our unequal system and into one created for growth by all from the start? If love has never been a popular movement, our new system could teach love like our one now tempts hate.</p>
-                        <p>I'm writing to you in Riverside Church, a short walk from where I now live. When I entered, they were tuning the organs for Easter service. I listened to your speech again from April 4, 1967 while seated in the second pew. I went downstairs to look for a tabletop to write this letter, finding only dark hallways and a bright basketball court.</p>
-                        <p>Someone directed me to a location upstairs, and when I reached it, I couldn't believe my eyes: there is a large photograph of you under an arch. I'm looking up at you as I write this letter. I was born days after your assassination, on Easter Sunday. We've transcribed your words into code. We have built a new edifice."</p>
-                    </blockquote>
-                </div>
-                <div class="works-item">
-                    <p class="works-title"><em>No man is an island. No land is a woman.</em></p>
-                    <p class="works-desc">Poem (unpublished)</p>
-                </div>
-                <div class="works-item">
-                    <p class="works-title"><em>I Want My Privacy and Your Transparency</em></p>
-                    <p class="works-desc">Essay (unpublished)</p>
-                    <p class="works-desc works-indent">How do we reconcile that we often want privacy for ourselves yet transparency from others online? Goaloop's system resolves this paradox. Excerpt:</p>
-                    <blockquote>
-                        <p>"As we become more connected electronically, we know each other less, isolated in worlds of agreement as algorithms draw smaller islands around each of us. Seeking agreement is a form of comfort, an understandable temptation in an unjust world.</p>
-                        <p>But these algorithms have been written to serve private profits, not us. Their collateral damage has been a stripping of our emotional investment in each other, of our exploration of each other. The result is a teaching of our emotional divestment in the other.</p>
-                        <p>Losing control of our private data, trust, and the roots and joys that trust brings, we are unmooring ourselves from each other. As we drift apart, our need for belonging is still anchored within us, making us susceptible to open arms that claim us, including violent ones. It's sometimes hard to see a revolution underway other than the quiet gutting of our inner lives in exchange for outer ones, shells easily filled by the strongest predator, while we're swept away by content streams throughout the day."</p>
-                    </blockquote>
-                </div>
-                <div class="works-item">
-                    <p class="works-title"><em>Accidental Smile</em></p>
-                    <p class="works-desc">Fiction short screenplay for use by Goaloop</p>
-                </div>
-            </div>
-            <div style="max-width: 960px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2;">
-                <picture>
-                    <source media="(max-width: 768px) and (orientation: portrait)" srcset="https://loriterrizzi.org/images/G-Triptych-OKeefe-daVinci-Coin-vertical.png">
-                    <img src="https://loriterrizzi.org/images/G-Triptych-OKeefe-daVinci-Coin.png" alt="Triptych: O'Keeffe, da Vinci, and Goaloop Coin" style="width: 100%; height: auto; display: block;" draggable="false">
-                </picture>
-                <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Coin-Natural-Currency.jpg" alt="Goaloop Coin – The world's first level marketplace, our natural currency" style="width: 100%; height: auto; display: block; margin-top: 0;" draggable="false">
-            </div>
-            <div class="works-social">
-                <a href="https://goaloop.com/loriterrizzi" target="_blank" aria-label="Goaloop"><img src="https://loriterrizzi.org/images/Goaloop-g-radio-signals.png" alt="Goaloop" class="icon-img" draggable="false"></a>
-                <a href="https://www.linkedin.com/in/loriterrizzi/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-                <a href="https://www.youtube.com/goaloop" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-                <a href="https://www.instagram.com/goaloop/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 11-2.88 0 1.441 1.441 0 012.88 0z"/></svg></a>
-                <a href="https://x.com/goaloop" target="_blank" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zm-1.22 19.694h2.038L6.486 3.239H4.298L17.681 20.847z"/></svg></a>
-                <a href="https://bsky.app/profile/goaloop.bsky.social" target="_blank" aria-label="Bluesky"><svg viewBox="0 0 24 24"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.596 6.449.77 2.819 3.516 3.745 6.104 3.471-3.75.521-7.145 2.06-3.549 7.159 3.857 4.713 6.356-1.236 6.849-3.012.493 1.776 2.428 7.461 6.849 3.012 3.596-5.1.201-6.638-3.549-7.159 2.588.274 5.334-.652 6.104-3.471C19.622 9.418 20 4.458 20 3.768c0-.688-.139-1.86-.902-2.203-.659-.299-1.664-.621-4.3 1.24C12.046 4.747 9.087 8.686 8 10.8h4z" transform="translate(2 2) scale(0.833)"/></svg></a>
-                <a href="https://medium.com/@goaloop" target="_blank" aria-label="Medium"><svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg></a>
-                <a href="https://www.pinterest.com/goaloop/" target="_blank" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12.017 24 18.635 24 24 18.633 24 12.013 24 5.393 18.635 0 12.017 0z"/></svg></a>
-                <a href="https://wellfound.com/company/goaloop/people" target="_blank" aria-label="Wellfound"><svg viewBox="0 0 26 22"><path d="M0 0l5.2 20h2.4L11 7.5 14.4 20h2.4L22 0h-3.4l-2.8 13.5L12.4 0H9.6L6.2 13.5 3.4 0H0z"/><circle cx="22.5" cy="7" r="2.8"/><circle cx="22.5" cy="16.5" r="2.8"/></svg></a>
-                <a href="https://www.facebook.com/goaloop" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-            </div>
-            <footer class="works-footer">
+            <footer class="hero-footer" id="footer-text">
                 <p>GOALOOP is patent pending.</p>
                 <p>© 2010 – 2026  Lori Terrizzi. All rights reserved.</p>
             </footer>
         </div>
-    </div>
 
-    <!-- ═══════════════ ABOUT ═══════════════ -->
-    <div id="page-about" class="page-view">
-        <div class="tree-page scrollable">
-            <img src="https://loriterrizzi.org/images/Lori-Terrizzi-Magenta-Goaloop-Tree-16x9.jpg" alt="Magenta tree composed of Goaloop's goal symbol, three concentric circles" class="bg-image" draggable="false">
-            <div class="about-content">
-                <h1>Lori Terrizzi</h1>
-                <p><a href="https://goaloop.org/about/#founder" target="_blank">Lori Terrizzi</a> is the CEO/Founder and Site Architect of <a href="https://entrepreneurship.columbia.edu/startup/goaloop-2/" target="_blank">GOALOOP – The Goal Market®, Connecting the World through Goals®</a>. Terrizzi holds an MFA from <a href="https://entrepreneurship.columbia.edu/startup/goaloop-2/" target="_blank">Columbia University</a> in Film and is a Phi Beta Kappa graduate of Rutgers College, where she was awarded the Vanderbilt Scholarship for the Study of Art &amp; Music. Goaloop is the product of her life-long focus on freedom, issues of identity, and study of the relationship between words and images, form and content, equity and ability, truth and memory, power and substance, one of us and all of us.</p>
-                <p>Founding client of Yale Law School's Entrepreneurship &amp; Innovation Clinic, Goaloop is patent pending and answers a fundamental question: Will today's interconnectivity become a web of surveillance that traps us as prey, or a trellis that supports growth toward fulfillment? Goaloop ensures the latter: a personal trellis for each of us, connected to build a better world for everyone. <a href="https://medium.com/@goaloop/goaloop-the-possibilities-are-endless-4cd7b8fc0524" target="_blank">Goaloop helps you reach your goals and connects the world through goals.</a></p>
-                <p>Goaloop is an outgrowth of Terrizzi's prior position as Executive Director of the non-profit organization of writers aiding writers, founded by Board Member Salman Rushdie, continuing the work of the International Parliament of Writers in the United States. Principally working with the organization's VP, Board Member Caryl Phillips, the Board of Directors also included President Russell Banks, Carolyn Forché, Jayne Cortez, Derek Walcott, Michael Ondaatje, Dionne Brand, and Wole Soyinka, with Advisory Board Members Toni Morrison and Margaret Atwood.</p>
-                <p>While protecting the creative freedom of artists writing in dozens of languages, the Internet was becoming a new 'language.' "Scaling" entered the lexicon. What were we scaling? Would it turn everyone into a 'persecuted writer?' How could we rewrite the semiotics of the Internet to help everyone achieve freedom?</p>
-                <p>These questions dovetailed with the collapse of Lehman Brothers, where Terrizzi had previously worked, provoking her imagination to conceive a new, accessible, transparent market. While at Lehman, she worked on a project with Ernest Green of the Little Rock Nine, whose transition from the non-profit sector to Wall Street made a lasting impression. She then produced for American Movie Classics on a weekly television show awarded the Emmy® for Best Series in its category for two consecutive years, before founding a non-profit film platform on the eve of YouTube, mentored by Carnegie Corporation president Vartan Gregorian. Terrizzi channeled these experiences to design Goaloop – The Goal Market®, a new cross-sector marketplace where the only cost of entry is a goal – and where every goal becomes a Govie™, an automatic 'goal movie.'</p>
-                <p>As VP of the new James Baldwin Society at Rutgers, Terrizzi began writing Mr. Baldwin a letter. He had agreed to attend the inaugural meeting; he died two months before. The letter remained unfinished – until Terrizzi completed it in a forthcoming video that tells Goaloop's origin story. The James Baldwin Estate granted Terrizzi permission to include an interview of Mr. Baldwin in this video, "Goaloop – Street of Dreams," which includes two screens:</p>
-                <blockquote>
-                    <p>The framework in which we operate weighs on us<br class="desktop-break">
-                    too heavily to be borne and is about to kill us.</p>
-                    <p class="quote-attrib"><span class="emdash"></span>James Baldwin<br>
-                    <span style="display:inline-block;width:1.6em;"></span>New York, 1963</p>
-                </blockquote>
-                <blockquote>
-                    <p>Dear Mr. Baldwin,<br>
-                    We have grown a new framework.<br>
-                    Love,<br>
-                    Goaloop</p>
-                </blockquote>
-                <p>The story <a href="#works" onclick="showPage('works'); return false;"><em>Raising Liberty: The Construction of the Statue of Liberty as Reconstruction Was Under Attack</em></a> served as a metaphor for the construction of Goaloop; it is being made into a movie.</p>
-                <p>The granddaughter of Armenian Genocide survivors and Sicilian immigrants, and the daughter of first-generation professors, Terrizzi was raised in Amherst, Massachusetts, where she formed a mission at an early age to build upon the freedoms she was born into: Artistic freedom for all. Believing "no one is free until we all are free" makes equality a prerequisite for freedom. Artistic freedom is elusive without economic freedom.</p>
-                <p>A formative experience included moving to Florence, Italy for a semester in high school, where Renaissance men were known, but not one mention of a Renaissance woman; where art is not relegated to museums, it is woven into life; where high school exams were verbal "interrogations" in front of the class in Italian, and the curriculum included Design. Terrizzi later bypassed scholarship opportunities to study architecture at RISD and biomedical engineering at Rutgers, called instead to study history through art, and human character through film.</p>
-                <p>Insisting on turning the privilege of becoming who you truly are into a right, and make it within everyone's reach, Goaloop fulfills Terrizzi's personal mission to build a system that supports our nature, utilizing technology for growth and innovation, instead of becoming more like the machines we create. Goaloop integrates AI while advancing Human Intelligence.</p>
-                <p>At the center of Goaloop's origin story is <a href="#works" onclick="showPage('works'); return false;">Toni Morrison's rose</a>, still atop a bookshelf in Manhattan, where Terrizzi resides.</p>
-            </div>
-            <img src="https://loriterrizzi.org/images/LoriTerrizzi-profile-color-square.png" alt="Lori Terrizzi, CEO/Founder of GOALOOP – The Goal Market®" class="about-profile" draggable="false">
-            <div class="about-social">
-                <a href="https://goaloop.com/loriterrizzi" target="_blank" aria-label="Goaloop"><img src="https://loriterrizzi.org/images/Goaloop-g-radio-signals.png" alt="Goaloop" class="icon-img" draggable="false"></a>
-                <a href="https://www.linkedin.com/in/loriterrizzi/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-                <a href="https://www.youtube.com/goaloop" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-                <a href="https://www.instagram.com/goaloop/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 11-2.88 0 1.441 1.441 0 012.88 0z"/></svg></a>
-                <a href="https://x.com/goaloop" target="_blank" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zm-1.22 19.694h2.038L6.486 3.239H4.298L17.681 20.847z"/></svg></a>
-                <a href="https://bsky.app/profile/goaloop.bsky.social" target="_blank" aria-label="Bluesky"><svg viewBox="0 0 24 24"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.596 6.449.77 2.819 3.516 3.745 6.104 3.471-3.75.521-7.145 2.06-3.549 7.159 3.857 4.713 6.356-1.236 6.849-3.012.493 1.776 2.428 7.461 6.849 3.012 3.596-5.1.201-6.638-3.549-7.159 2.588.274 5.334-.652 6.104-3.471C19.622 9.418 20 4.458 20 3.768c0-.688-.139-1.86-.902-2.203-.659-.299-1.664-.621-4.3 1.24C12.046 4.747 9.087 8.686 8 10.8h4z" transform="translate(2 2) scale(0.833)"/></svg></a>
-                <a href="https://medium.com/@goaloop" target="_blank" aria-label="Medium"><svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg></a>
-                <a href="https://www.pinterest.com/goaloop/" target="_blank" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12.017 24 18.635 24 24 18.633 24 12.013 24 5.393 18.635 0 12.017 0z"/></svg></a>
-                <a href="https://wellfound.com/company/goaloop/people" target="_blank" aria-label="Wellfound"><svg viewBox="0 0 26 22"><path d="M0 0l5.2 20h2.4L11 7.5 14.4 20h2.4L22 0h-3.4l-2.8 13.5L12.4 0H9.6L6.2 13.5 3.4 0H0z"/><circle cx="22.5" cy="7" r="2.8"/><circle cx="22.5" cy="16.5" r="2.8"/></svg></a>
-                <a href="https://www.facebook.com/goaloop" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-            </div>
-            <footer class="about-footer">
-                <p>GOALOOP is patent pending.</p>
-                <p>© 2010 – 2026  Lori Terrizzi. All rights reserved.</p>
-            </footer>
+        <!-- BG 1 – Shadow Orange Tree -->
+        <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Orange-Goaloop-Tree-16-9.jpg');" aria-label="Shadow orange Goaloop tree"></div>
+
+        <!-- Floating – Swing Set Dawn / Statue of Liberty -->
+        <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Swing-Set-Dawn-Statue-of-Liberty-2026-16-9.jpg" alt="Goaloop swing set at dawn with the Statue of Liberty" draggable="false">
+
+        <!-- BG 2 – Gold Magenta Tree -->
+        <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Gold-Magenta-Goaloop-Tree-2026-16-9.jpg');" aria-label="Gold magenta Goaloop tree"></div>
+
+        <!-- Floating – Love Revolution -->
+        <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Purple-Pearls-Goaloop-Tree-2026-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+            <img class="floating-img" src="https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Love-Revolution-2026.png" alt="Goaloop Love Revolution" draggable="false">
         </div>
+
+        <!-- BG 3 – Black & White Tree -->
+        <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Black+White-Goaloop-Tree-16-9.jpg');" aria-label="Black and white Goaloop tree"></div>
+
+        <!-- Floating – Peace Code -->
+        <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Purple-Goaloop-Tree-16x9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+            <img class="floating-img" src="https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Peace-Code-2026.png" alt="Goaloop Peace Code" draggable="false">
+        </div>
+
+        <!-- BG 5 – Teal Tree -->
+        <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Teal-Goaloop-Tree-2026-16-9.jpg');" aria-label="Teal Goaloop tree"></div>
+
+        <!-- Floating – Jack Kim Quote -->
+        <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Orange-Goaloop-Tree-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+            <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Founding-Team-Jack-Juneho-Kim-quote.png" alt="Goaloop founding team quote by Jack Juneho Kim" draggable="false">
+        </div>
+
+        <!-- BG 6 – Pink Gold Tree -->
+        <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Pink-Gold-Goaloop-Tree-2026-16-9.jpg');" aria-label="Pink gold Goaloop tree"></div>
+
+        <!-- Floating – Michael Chen PhD Quote -->
+        <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Teal-Goaloop-Tree-2026-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+            <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Michael-Chen-PhD-quote-2026.png" alt="Goaloop team quote by Michael Chen PhD" draggable="false">
+        </div>
+
+        <!-- BG 7 – Shadow Green Tree -->
+        <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Green-Goaloop-Tree-2026-16x9.jpg');" aria-label="Shadow green Goaloop tree"></div>
+
+        <!-- Floating – Shankha Dey Quote -->
+        <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Purple-Goaloop-Tree-16x9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+            <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Shankha-Dey-quote-2026.png" alt="Goaloop team quote by Shankha Dey" draggable="false">
+        </div>
+
+        <!-- BG 8 – Goaloop Coin -->
+        <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Coin-Home-Page-2026-16x9.jpg');" aria-label="Goaloop Coin"></div>
+
+        <!-- Social row + Footer -->
+        <div class="home-social">
+            <a href="https://goaloop.com/loriterrizzi" target="_blank" aria-label="Goaloop"><img src="https://loriterrizzi.org/images/Goaloop-g-radio-signals.png" alt="Goaloop" class="icon-img" draggable="false"></a>
+            <a href="https://www.linkedin.com/in/loriterrizzi/" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="https://www.youtube.com/goaloop" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="https://www.instagram.com/goaloop/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 11-2.88 0 1.441 1.441 0 012.88 0z"/></svg></a>
+            <a href="https://x.com/goaloop" target="_blank" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zm-1.22 19.694h2.038L6.486 3.239H4.298L17.681 20.847z"/></svg></a>
+            <a href="https://bsky.app/profile/goaloop.bsky.social" target="_blank" aria-label="Bluesky"><svg viewBox="0 0 24 24"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.596 6.449.77 2.819 3.516 3.745 6.104 3.471-3.75.521-7.145 2.06-3.549 7.159 3.857 4.713 6.356-1.236 6.849-3.012.493 1.776 2.428 7.461 6.849 3.012 3.596-5.1.201-6.638-3.549-7.159 2.588.274 5.334-.652 6.104-3.471C19.622 9.418 20 4.458 20 3.768c0-.688-.139-1.86-.902-2.203-.659-.299-1.664-.621-4.3 1.24C12.046 4.747 9.087 8.686 8 10.8h4z" transform="translate(2 2) scale(0.833)"/></svg></a>
+            <a href="https://medium.com/@goaloop" target="_blank" aria-label="Medium"><svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg></a>
+            <a href="https://www.pinterest.com/goaloop/" target="_blank" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12.017 24 18.635 24 24 18.633 24 12.013 24 5.393 18.635 0 12.017 0z"/></svg></a>
+            <a href="https://wellfound.com/company/goaloop/people" target="_blank" aria-label="Wellfound"><svg viewBox="0 0 26 22"><path d="M0 0l5.2 20h2.4L11 7.5 14.4 20h2.4L22 0h-3.4l-2.8 13.5L12.4 0H9.6L6.2 13.5 3.4 0H0z"/><circle cx="22.5" cy="7" r="2.8"/><circle cx="22.5" cy="16.5" r="2.8"/></svg></a>
+            <a href="https://www.facebook.com/goaloop" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        </div>
+        <footer class="home-footer">
+            <p>GOALOOP is patent pending.</p>
+            <p>© 2010 – 2026  Lori Terrizzi. All rights reserved.</p>
+        </footer>
+
     </div>
 
     <!-- HIDDEN BIO (SEO) -->
@@ -603,7 +286,8 @@
     <!-- SCRIPTS -->
     <script>
         var isMobile = window.innerWidth <= 768;
-        setTimeout(function(){ document.querySelector('.site-nav').classList.add('visible'); }, isMobile ? 0 : 6500);
+        var nav = document.querySelector('.site-nav');
+        setTimeout(function(){ nav.classList.remove('home-nav-hidden'); }, isMobile ? 0 : 6500);
         setTimeout(function(){ document.getElementById('footer-text').classList.add('visible'); }, isMobile ? 0 : 9000);
         setTimeout(function(){ document.getElementById('phrase-1').classList.add('visible'); }, isMobile ? 0 : 11500);
         setTimeout(function(){ document.getElementById('phrase-2').classList.add('visible'); }, isMobile ? 0 : 14000);
@@ -616,51 +300,22 @@
         document.getElementById('close-quote').textContent = String.fromCharCode(8221);
 
         var homeScroll = document.getElementById('home-scroll');
-        var siteNav = document.querySelector('.site-nav');
         homeScroll.addEventListener('scroll', function() {
             var scrollBottom = homeScroll.scrollTop + homeScroll.clientHeight;
             var totalHeight = homeScroll.scrollHeight;
             if (totalHeight - scrollBottom < 200) {
-                siteNav.classList.add('nav-solid');
+                nav.classList.add('nav-solid');
             } else {
-                siteNav.style.transition = 'none';
-            siteNav.classList.remove('nav-solid');
-            siteNav.offsetHeight;
-            siteNav.style.transition = '';
+                nav.style.transition = 'none';
+                nav.classList.remove('nav-solid');
+                nav.offsetHeight;
+                nav.style.transition = '';
             }
         });
 
-        function showPage(t) {
-            document.querySelectorAll('.page-view').forEach(function(p){ p.classList.remove('active'); });
-            document.getElementById('page-' + t).classList.add('active');
-            document.querySelectorAll('.nav-links a[data-page]').forEach(function(a){
-                a.classList.remove('active');
-                if (a.getAttribute('data-page') === t) a.classList.add('active');
-            });
-            siteNav.classList.remove('nav-solid');
-            if (t === 'home') {
-                var hs = document.getElementById('home-scroll');
-                if (hs) hs.scrollTop = 0;
-            } else {
-                var tp = document.querySelector('#page-' + t + ' .tree-page.scrollable');
-                if (tp) tp.scrollTop = 0;
-            }
-        }
-        document.querySelectorAll('.nav-links a[data-page]').forEach(function(link){
-            link.addEventListener('click', function(e){
-                e.preventDefault();
-                var t = this.getAttribute('data-page');
-                window.location.hash = t === 'home' ? '' : t;
-                showPage(t);
-                document.querySelector('.nav-links').classList.remove('open');
-            });
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('open');
         });
-        function handleHash() {
-            var h = window.location.hash.replace('#','');
-            if (h === 'works' || h === 'about') showPage(h); else showPage('home');
-        }
-        window.addEventListener('hashchange', handleHash);
-        if (window.location.hash) handleHash();
     </script>
 </body>
 </html>
