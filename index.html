@@ -286,18 +286,34 @@
     <!-- SCRIPTS -->
     <script>
         var isMobile = window.innerWidth <= 768;
+        var hasVisited = sessionStorage.getItem('hasVisitedHome');
         var nav = document.querySelector('.site-nav');
-        setTimeout(function(){ nav.classList.remove('home-nav-hidden'); }, isMobile ? 0 : 6500);
-        setTimeout(function(){ document.getElementById('footer-text').classList.add('visible'); }, isMobile ? 0 : 9000);
-        setTimeout(function(){ document.getElementById('phrase-1').classList.add('visible'); }, isMobile ? 0 : 11500);
-        setTimeout(function(){ document.getElementById('phrase-2').classList.add('visible'); }, isMobile ? 0 : 14000);
-        setTimeout(function(){ document.getElementById('phrase-3').classList.add('visible'); }, isMobile ? 0 : 16500);
-        setTimeout(function(){ document.getElementById('phrase-attribution').classList.add('visible'); }, isMobile ? 0 : 19000);
-        setTimeout(function(){ document.getElementById('hero-social').classList.add('visible'); }, isMobile ? 0 : 21500);
-        setTimeout(function(){ document.getElementById('home-scroll').classList.add('scrollable'); }, isMobile ? 0 : 23000);
+        var skipAnimation = isMobile || hasVisited;
 
         document.getElementById('open-quote').textContent = String.fromCharCode(8220);
         document.getElementById('close-quote').textContent = String.fromCharCode(8221);
+
+        if (skipAnimation) {
+            document.querySelectorAll('.slide-1, .slide-2').forEach(function(s) { s.style.display = 'none'; });
+            nav.classList.remove('home-nav-hidden');
+            document.getElementById('footer-text').classList.add('visible');
+            document.getElementById('phrase-1').classList.add('visible');
+            document.getElementById('phrase-2').classList.add('visible');
+            document.getElementById('phrase-3').classList.add('visible');
+            document.getElementById('phrase-attribution').classList.add('visible');
+            document.getElementById('hero-social').classList.add('visible');
+            document.getElementById('home-scroll').classList.add('scrollable');
+        } else {
+            setTimeout(function(){ nav.classList.remove('home-nav-hidden'); }, 6500);
+            setTimeout(function(){ document.getElementById('footer-text').classList.add('visible'); }, 9000);
+            setTimeout(function(){ document.getElementById('phrase-1').classList.add('visible'); }, 11500);
+            setTimeout(function(){ document.getElementById('phrase-2').classList.add('visible'); }, 14000);
+            setTimeout(function(){ document.getElementById('phrase-3').classList.add('visible'); }, 16500);
+            setTimeout(function(){ document.getElementById('phrase-attribution').classList.add('visible'); }, 19000);
+            setTimeout(function(){ document.getElementById('hero-social').classList.add('visible'); }, 21500);
+            setTimeout(function(){ document.getElementById('home-scroll').classList.add('scrollable'); }, 23000);
+            sessionStorage.setItem('hasVisitedHome', 'true');
+        }
 
         var homeScroll = document.getElementById('home-scroll');
         homeScroll.addEventListener('scroll', function() {
