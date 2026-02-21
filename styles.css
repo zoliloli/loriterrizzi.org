@@ -83,7 +83,7 @@ a { text-decoration: none; }
 }
 
 /* ═══════════════ TREE PAGE (ABOUT & WORKS) ═══════════════ */
-.tree-page { position: relative; width: 100%; min-height: 100vh; }
+.tree-page { position: relative; width: 100%; }
 .tree-page .bg-image { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 0; }
 
 /* ═══════════════ ABOUT ═══════════════ */
@@ -156,7 +156,7 @@ a { text-decoration: none; }
     .mobile-break { display: block; }
     .desktop-break { display: none; }
     .desktop-spaces { display: none; }
-    .hero-crossfade .slide-1, .hero-crossfade .slide-2 { display: none; }
+                .hero-crossfade .slide-1, .hero-crossfade .slide-2 { animation: none; -webkit-animation: none; }
     .hero-social { display: none; }
     .hero-social, .home-social, .about-social, .works-social { flex-wrap: wrap; }
     .hero-social { left: 50%; transform: translateX(-50%); width: 260px; }

@@ -19,6 +19,7 @@
     <link rel="me" href="https://medium.com/@goaloop/goaloop-the-possibilities-are-endless-4cd7b8fc0524">
     <link rel="me" href="https://medium.com/@goaloop/raising-liberty-1235946119aa">
     <link rel="me" href="https://business.cornell.edu/hub/2019/01/04/three-reasons-intern-startup/">
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
     <link rel="stylesheet" href="https://use.typekit.net/see6hef.css">
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -288,12 +289,12 @@
         var isMobile = window.innerWidth <= 768;
         var hasVisited = sessionStorage.getItem('hasVisitedHome');
         var nav = document.querySelector('.site-nav');
-        var skipAnimation = isMobile || hasVisited;
 
         document.getElementById('open-quote').textContent = String.fromCharCode(8220);
         document.getElementById('close-quote').textContent = String.fromCharCode(8221);
 
-        if (skipAnimation) {
+        if (hasVisited) {
+            /* Return visit (any device): skip everything */
             document.querySelectorAll('.slide-1, .slide-2').forEach(function(s) { s.style.display = 'none'; });
             nav.classList.remove('home-nav-hidden');
             document.getElementById('footer-text').classList.add('visible');
@@ -303,7 +304,21 @@
             document.getElementById('phrase-attribution').classList.add('visible');
             document.getElementById('hero-social').classList.add('visible');
             document.getElementById('home-scroll').classList.add('scrollable');
+        } else if (isMobile) {
+            /* Mobile first visit: hard-cut images, text instant */
+            setTimeout(function(){ document.querySelector('.slide-1').style.display = 'none'; }, 2000);
+            setTimeout(function(){ document.querySelector('.slide-2').style.display = 'none'; }, 4500);
+            nav.classList.remove('home-nav-hidden');
+            document.getElementById('footer-text').classList.add('visible');
+            document.getElementById('phrase-1').classList.add('visible');
+            document.getElementById('phrase-2').classList.add('visible');
+            document.getElementById('phrase-3').classList.add('visible');
+            document.getElementById('phrase-attribution').classList.add('visible');
+            document.getElementById('hero-social').classList.add('visible');
+            document.getElementById('home-scroll').classList.add('scrollable');
+            sessionStorage.setItem('hasVisitedHome', 'true');
         } else {
+            /* Desktop first visit: full animation with dissolves */
             setTimeout(function(){ nav.classList.remove('home-nav-hidden'); }, 6500);
             setTimeout(function(){ document.getElementById('footer-text').classList.add('visible'); }, 9000);
             setTimeout(function(){ document.getElementById('phrase-1').classList.add('visible'); }, 11500);
