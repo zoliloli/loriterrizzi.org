@@ -156,7 +156,8 @@ a { text-decoration: none; }
     .mobile-break { display: block; }
     .desktop-break { display: none; }
     .desktop-spaces { display: none; }
-                .hero-crossfade .slide-1, .hero-crossfade .slide-2 { animation: none; -webkit-animation: none; }
+                .hero-crossfade .slide-1 { animation: fadeOut 0.5s ease-in-out 2.0s forwards; -webkit-animation: fadeOut 0.5s ease-in-out 2.0s forwards; }
+            .hero-crossfade .slide-2 { animation: fadeOut 0.5s ease-in-out 4.5s forwards; -webkit-animation: fadeOut 0.5s ease-in-out 4.5s forwards; }
     .hero-social { display: none; }
     .hero-social, .home-social, .about-social, .works-social { flex-wrap: wrap; }
     .hero-social { left: 50%; transform: translateX(-50%); width: 260px; }
