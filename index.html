@@ -240,7 +240,7 @@
         <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Teal-Goaloop-Tree-2026-16-9.jpg');" aria-label="Teal Goaloop tree"></div>
 
         <!-- Floating – Jack Kim Quote -->
-        <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Orange-Goaloop-Tree-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Glittering-Green-Goaloop-Tree-2026-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
             <picture>
                 <source media="(max-width: 768px)" srcset="https://loriterrizzi.org/images/Goaloop-Founding-Team-Jack-Juneho-Kim.jpg">
                 <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Founding-Team-Jack-Juneho-Kim-quote.png" alt="Goaloop founding team quote by Jack Juneho Kim" draggable="false">
@@ -258,8 +258,8 @@
             </picture>
         </div>
 
-        <!-- BG 7 – Shadow Green Tree -->
-        <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Green-Goaloop-Tree-2026-16x9.jpg');" aria-label="Shadow green Goaloop tree"></div>
+        <!-- BG 6 – Glittering Green Tree -->
+        <div class="parallax-bg" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Glittering-Green-Goaloop-Tree-2026-16-9.jpg');" aria-label="Glittering green Goaloop tree"></div>
 
         <!-- Floating – Shankha Dey Quote -->
         <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Purple-Goaloop-Tree-16x9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
@@ -320,11 +320,11 @@
             document.getElementById('hero-social').classList.add('visible');
             document.getElementById('home-scroll').classList.add('scrollable');
         } else if (isMobile) {
-            /* Mobile first visit: dissolves via CSS, text appears with purple tree, then auto-scroll */
-            nav.classList.remove('home-nav-hidden');
+            /* Mobile first visit: dissolves via CSS, nav appears after purple tree, then auto-scroll */
             document.getElementById('footer-text').classList.add('visible');
             document.getElementById('home-scroll').classList.add('scrollable');
             setTimeout(function(){
+                nav.classList.remove('home-nav-hidden');
                 document.getElementById('phrase-1').classList.add('visible');
                 document.getElementById('phrase-2').classList.add('visible');
                 document.getElementById('phrase-3').classList.add('visible');
@@ -367,6 +367,10 @@
                 nav.offsetHeight;
                 nav.style.transition = '';
             }
+        });
+
+        document.querySelectorAll('a[href]').forEach(function(a) {
+            if (a.hostname && a.hostname !== location.hostname) { a.target = '_blank'; a.rel = 'noopener'; }
         });
     </script>
 </body>
