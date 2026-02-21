@@ -219,7 +219,10 @@
 
         <!-- Floating – Love Revolution -->
         <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Purple-Pearls-Goaloop-Tree-2026-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-            <img class="floating-img" src="https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Love-Revolution-2026.png" alt="Goaloop Love Revolution" draggable="false">
+            <picture>
+                <source media="(max-width: 768px)" srcset="https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Love-Revolution.png">
+                <img class="floating-img" src="https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Love-Revolution-2026.png" alt="Goaloop Love Revolution" draggable="false">
+            </picture>
         </div>
 
         <!-- BG 3 – Black & White Tree -->
@@ -227,7 +230,10 @@
 
         <!-- Floating – Peace Code -->
         <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Purple-Goaloop-Tree-16x9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-            <img class="floating-img" src="https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Peace-Code-2026.png" alt="Goaloop Peace Code" draggable="false">
+            <picture>
+                <source media="(max-width: 768px)" srcset="https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Peace-Code.png">
+                <img class="floating-img" src="https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Peace-Code-2026.png" alt="Goaloop Peace Code" draggable="false">
+            </picture>
         </div>
 
         <!-- BG 5 – Teal Tree -->
@@ -235,7 +241,10 @@
 
         <!-- Floating – Jack Kim Quote -->
         <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Shadow-Orange-Goaloop-Tree-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-            <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Founding-Team-Jack-Juneho-Kim-quote.png" alt="Goaloop founding team quote by Jack Juneho Kim" draggable="false">
+            <picture>
+                <source media="(max-width: 768px)" srcset="https://loriterrizzi.org/images/Goaloop-Founding-Team-Jack-Juneho-Kim.png">
+                <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Founding-Team-Jack-Juneho-Kim-quote.png" alt="Goaloop founding team quote by Jack Juneho Kim" draggable="false">
+            </picture>
         </div>
 
         <!-- BG 6 – Pink Gold Tree -->
@@ -243,7 +252,10 @@
 
         <!-- Floating – Michael Chen PhD Quote -->
         <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Teal-Goaloop-Tree-2026-16-9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-            <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Michael-Chen-PhD-quote-2026.png" alt="Goaloop team quote by Michael Chen PhD" draggable="false">
+            <picture>
+                <source media="(max-width: 768px)" srcset="https://loriterrizzi.org/images/Goaloop-Michael-Chen-PhD-quote.png">
+                <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Michael-Chen-PhD-quote-2026.png" alt="Goaloop team quote by Michael Chen PhD" draggable="false">
+            </picture>
         </div>
 
         <!-- BG 7 – Shadow Green Tree -->
@@ -251,7 +263,10 @@
 
         <!-- Floating – Shankha Dey Quote -->
         <div class="parallax-bg floating-wrap" style="background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Purple-Goaloop-Tree-16x9.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-            <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Shankha-Dey-quote-2026.png" alt="Goaloop team quote by Shankha Dey" draggable="false">
+            <picture>
+                <source media="(max-width: 768px)" srcset="https://loriterrizzi.org/images/Goaloop-Shankha-Dey-quote.png">
+                <img class="floating-img" src="https://loriterrizzi.org/images/Goaloop-Shankha-Dey-quote-2026.png" alt="Goaloop team quote by Shankha Dey" draggable="false">
+            </picture>
         </div>
 
         <!-- BG 8 – Goaloop Coin -->
@@ -316,7 +331,15 @@
                 document.getElementById('phrase-attribution').classList.add('visible');
             }, 4500);
             setTimeout(function(){
-                document.getElementById('home-scroll').scrollTo({ top: Math.round(window.innerHeight * 0.35), behavior: 'smooth' });
+                var el = document.getElementById('home-scroll');
+                var target = el.scrollHeight - el.clientHeight;
+                var speed = 3; /* pixels per frame (~180px/sec at 60fps) */
+                var stopped = false;
+                function stopAuto() { stopped = true; el.removeEventListener('touchstart', stopAuto); el.removeEventListener('wheel', stopAuto); }
+                el.addEventListener('touchstart', stopAuto, { passive: true });
+                el.addEventListener('wheel', stopAuto, { passive: true });
+                function step() { if (stopped || el.scrollTop >= target) return; el.scrollTop += speed; requestAnimationFrame(step); }
+                requestAnimationFrame(step);
             }, 7500);
             sessionStorage.setItem('hasVisitedHome', 'true');
         } else {
