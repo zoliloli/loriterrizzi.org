@@ -12,12 +12,8 @@
     <link rel="canonical" href="https://loriterrizzi.org/works.html">
     <meta name="ai-content-declaration" content="original creative and professional work by Lori Terrizzi">
     <link rel="preload" href="https://loriterrizzi.org/images/Lori-Terrizzi-Green-Goaloop-Tree-16x9.jpg" as="image">
-    <link rel="preload" href="https://use.typekit.net/see6hef.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://use.typekit.net/see6hef.css"></noscript>
+    <link rel="stylesheet" href="https://use.typekit.net/see6hef.css">
     <link rel="stylesheet" href="/styles.css">
-    <style>
-        body { overflow-y: hidden; }
-    </style>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -45,7 +41,7 @@
                 <span class="nav-tagline">Goaloop – The Goal Market<span class="reg-mark">®</span></span>
             </a>
         </div>
-        <button class="nav-toggle" aria-label="Toggle navigation">
+        <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
             <span></span><span></span><span></span>
         </button>
         <ul class="nav-links">
@@ -139,10 +135,5 @@
         </footer>
     </div>
 
-    <script>
-        document.querySelector('.nav-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('open');
-        });
-    </script>
 </body>
 </html>
