@@ -161,9 +161,10 @@ a { text-decoration: none; }
     .hero-social, .home-social, .about-social, .works-social { flex-wrap: wrap; }
     .hero-social { left: 50%; transform: translateX(-50%); width: 260px; }
     .home-social, .about-social, .works-social { max-width: 260px; margin-left: auto; margin-right: auto; }
-    .home-social { padding-top: 60px; }
+    .home-social { padding-top: 30px; }
     .parallax-bg { background-attachment: scroll; height: 56.25vw; }
     .parallax-bg.floating-wrap { height: auto; background-attachment: scroll; }
+    #coin-parallax { background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Coin-Home-Page-2026-16x9.jpg') !important; }
 }
 
 /* ═══════════════ MOBILE LANDSCAPE ═══════════════ */
@@ -183,11 +184,13 @@ a { text-decoration: none; }
     .hero-social { display: none; }
     .hero-footer { bottom: 8px; padding-left: 50px; }
     .mobile-break { display: block; }
+    .desktop-spaces { display: none; }
     .hero-footer p { font-size: 10px; }
     .hero-footer p + p { margin-top: 0.3em; }
     .parallax-bg { height: auto; min-height: 0; }
     .parallax-bg::after { content: ''; display: block; padding-bottom: 56.25%; }
     .parallax-bg.floating-wrap { height: auto; }
     .parallax-bg.floating-wrap::after { display: none; }
+    #coin-parallax { background-image: url('https://loriterrizzi.org/images/Lori-Terrizzi-Goaloop-Coin-Home-Page-2026-16x9.jpg') !important; }
     .about-content, .works-content { padding: 60px 40px 60px 60px; }
 }
